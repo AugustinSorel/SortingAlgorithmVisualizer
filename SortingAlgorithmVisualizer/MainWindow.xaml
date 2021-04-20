@@ -32,11 +32,20 @@
         </Canvas>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Click="Button_Click" ToolTip="Start the animation">
+            <Button Name="startButton" Click="Button_Click" ToolTip="Start the animation">
                 <Path Height="30" Width="30" Stroke="#2ecc71" Stretch="Uniform" Fill="#27ae60" 
                       StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
                     <Path.Data>
                         <PathGeometry Figures="M 0 0 L 0 13 L 10 6 Z"/>
+                    </Path.Data>
+                </Path>
+            </Button>
+
+            <Button Name="pauseButton" Click="pauseButton_Click" ToolTip="Pause/Resume the animation">
+                <Path Height="30" Width="30" Stroke="#34495e" Stretch="Uniform" Fill="#2c3e50" 
+                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0 0 L 2 0 L 2 7 L 0 7 Z M 3 0 L 5 0 L 5 7 L 3 7 Z"/>
                     </Path.Data>
                 </Path>
             </Button>

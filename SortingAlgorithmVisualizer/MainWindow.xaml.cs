@@ -69,5 +69,10 @@ namespace SortingAlgorithmVisualizer
         {
             DisplayArray();
         }
+
+        private void pauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
     }
 }
