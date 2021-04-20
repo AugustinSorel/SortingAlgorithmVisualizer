@@ -27,11 +27,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Canvas Name="canvas">
-
-        </Canvas>
+        <Canvas Name="canvas"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            
             <Button Name="startButton" Click="StartButton_Click" ToolTip="Start the animation (s)">
                 <Path Height="30" Width="30" Stroke="#2ecc71" Stretch="Uniform" Fill="#27ae60" 
                       StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
@@ -58,6 +57,7 @@
                     </Path.Data>
                 </Path>
             </Button>
+            
         </StackPanel>
     </Grid>
 </Window>
