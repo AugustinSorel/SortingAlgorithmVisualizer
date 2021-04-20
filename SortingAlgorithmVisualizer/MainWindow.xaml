@@ -10,8 +10,9 @@
         WindowStartupLocation="CenterScreen"
         Background="Black"
         KeyDown="Window_KeyDown"
+        ContentRendered="Window_ContentRendered"
         Title="MainWindow" Height="500" Width="500">
-    <Canvas>
-        
+    <Canvas Name="canvas">
+
     </Canvas>
 </Window>
