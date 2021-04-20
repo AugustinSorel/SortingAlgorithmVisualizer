@@ -12,6 +12,15 @@
         KeyDown="Window_KeyDown"
         ContentRendered="Window_ContentRendered"
         Title="MainWindow" Height="500" Width="500">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/ButtonDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -23,7 +32,7 @@
         </Canvas>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Click="Button_Click">
+            <Button Click="Button_Click" Style="{StaticResource DefaultButtonStyle}">
                 Hello
             </Button>
         </StackPanel>
