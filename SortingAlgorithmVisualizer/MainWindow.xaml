@@ -22,8 +22,8 @@
 
         </Canvas>
 
-        <StackPanel Grid.Row="1">
-            <Button>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Click="Button_Click">
                 Hello
             </Button>
         </StackPanel>

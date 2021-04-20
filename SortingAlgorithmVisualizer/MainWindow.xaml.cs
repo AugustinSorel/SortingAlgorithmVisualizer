@@ -36,12 +36,18 @@ namespace SortingAlgorithmVisualizer
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            DisplayArray();
+        }
+
+        private void DisplayArray()
+        {
             SetUpArray();
             DisplayTheArrayWithRectangles();
         }
 
         private void DisplayTheArrayWithRectangles()
         {
+            canvas.Children.Clear();
             for (int i = 0; i < randomInts.Length; i++)
             {
                 Rectangle rectangle = new Rectangle()
@@ -57,6 +63,15 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
+        }
+
+        private void Button_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DisplayArray();
         }
     }
 }
