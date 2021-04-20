@@ -49,6 +49,15 @@
                     </Path.Data>
                 </Path>
             </Button>
+
+            <Button Name="abortButton" Click="abortButton_Click" ToolTip="abort the animation">
+                <Path Height="30" Width="30" Stroke="#e74c3c" Stretch="Uniform" Fill="#c0392b" 
+                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0 0 L 5 0 L 5 5 L 0 5 Z"/>
+                    </Path.Data>
+                </Path>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

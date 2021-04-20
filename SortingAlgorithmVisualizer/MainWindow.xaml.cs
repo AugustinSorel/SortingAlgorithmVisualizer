@@ -74,5 +74,10 @@ namespace SortingAlgorithmVisualizer
         {
             //
         }
+
+        private void abortButton_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
     }
 }
