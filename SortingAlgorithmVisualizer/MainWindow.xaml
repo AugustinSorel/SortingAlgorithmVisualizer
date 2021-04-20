@@ -33,7 +33,12 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Click="Button_Click">
-                Hello
+                <Path Height="30" Width="30" Stroke="Green" Stretch="Uniform" Fill="LightGreen" 
+                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0 0 L 0 13 L 10 6 Z"/>
+                    </Path.Data>
+                </Path>
             </Button>
         </StackPanel>
     </Grid>
