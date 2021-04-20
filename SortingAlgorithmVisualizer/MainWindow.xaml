@@ -32,8 +32,8 @@
         </Canvas>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Click="Button_Click">
-                <Path Height="30" Width="30" Stroke="Green" Stretch="Uniform" Fill="LightGreen" 
+            <Button Click="Button_Click" ToolTip="Start the animation">
+                <Path Height="30" Width="30" Stroke="#2ecc71" Stretch="Uniform" Fill="#27ae60" 
                       StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
                     <Path.Data>
                         <PathGeometry Figures="M 0 0 L 0 13 L 10 6 Z"/>
