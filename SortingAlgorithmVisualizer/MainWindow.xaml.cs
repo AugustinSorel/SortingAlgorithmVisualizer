@@ -31,6 +31,13 @@ namespace SortingAlgorithmVisualizer
         {
             if (e.Key == Key.Escape)
                 Application.Current.Shutdown();
+            else if (e.Key == Key.P)
+                PauseButton_Click(null, null);
+            else if (e.Key == Key.A)
+                AbortButton_Click(null, null);
+            else if (e.Key == Key.S)
+                StartButton_Click(null, null);
+
         }
         #endregion
 
@@ -65,19 +72,19 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Pause");
+        }
+
+        private void AbortButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Abort");
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             DisplayArray();
-        }
-
-        private void pauseButton_Click(object sender, RoutedEventArgs e)
-        {
-            //
-        }
-
-        private void abortButton_Click(object sender, RoutedEventArgs e)
-        {
-            //
         }
     }
 }
