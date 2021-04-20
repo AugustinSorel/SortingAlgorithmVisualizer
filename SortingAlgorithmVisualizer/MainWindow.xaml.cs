@@ -42,10 +42,10 @@ namespace SortingAlgorithmVisualizer
         private void DisplayArray()
         {
             SetUpArray();
-            DisplayTheArrayWithRectangles();
+            AddRectanglesToCanvas();
         }
 
-        private void DisplayTheArrayWithRectangles()
+        private void AddRectanglesToCanvas()
         {
             canvas.Children.Clear();
             for (int i = 0; i < randomInts.Length; i++)
@@ -63,10 +63,6 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
-        }
-
-        private void Button_KeyDown(object sender, KeyEventArgs e)
-        {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
