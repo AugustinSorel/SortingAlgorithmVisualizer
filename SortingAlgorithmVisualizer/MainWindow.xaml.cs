@@ -24,5 +24,11 @@ namespace SortingAlgorithmVisualizer
         {
             InitializeComponent();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Application.Current.Shutdown();
+        }
     }
 }

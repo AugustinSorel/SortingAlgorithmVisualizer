@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortingAlgorithmVisualizer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Black"
+        KeyDown="Window_KeyDown"
+        Title="MainWindow" Height="500" Width="500">
+    <Canvas>
         
-    </Grid>
+    </Canvas>
 </Window>
