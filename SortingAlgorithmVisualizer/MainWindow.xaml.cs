@@ -61,9 +61,9 @@ namespace SortingAlgorithmVisualizer
                 {
                     Height = randomInts[i],
                     Width = canvas.ActualWidth / randomInts.Length,
-                    Fill = Brushes.Gray,
+                    Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
                     StrokeThickness = 1,
-                    Stroke = Brushes.Red,
+                    Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
                 };
 
                 canvas.Children.Add(rectangle);
