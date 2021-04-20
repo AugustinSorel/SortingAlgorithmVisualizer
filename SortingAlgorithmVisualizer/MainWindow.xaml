@@ -12,7 +12,20 @@
         KeyDown="Window_KeyDown"
         ContentRendered="Window_ContentRendered"
         Title="MainWindow" Height="500" Width="500">
-    <Canvas Name="canvas">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-    </Canvas>
+        <Canvas Name="canvas">
+
+        </Canvas>
+
+        <StackPanel Grid.Row="1">
+            <Button>
+                Hello
+            </Button>
+        </StackPanel>
+    </Grid>
 </Window>
