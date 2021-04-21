@@ -19,6 +19,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/ButtonDictionary.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/SliderDictionary.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/PathDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -39,7 +40,7 @@
                 <Run Text="{Binding Path=ArraySize}"/>
             </TextBlock>
             
-            <Slider Name="arraySizeSlider" Width="100" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=ArraySize}"
+            <Slider Name="arraySizeSlider" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=ArraySize}"
                     ValueChanged="ArraySizeSlider_ValueChanged"
                     >
 
@@ -69,6 +70,15 @@
                 </Path>
             </Button>
 
+            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="70">
+                <ComboBoxItem Content="Coffie"></ComboBoxItem>
+                <ComboBoxItem Content="Tea"></ComboBoxItem>
+                <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
+                <ComboBoxItem Content="Milk"></ComboBoxItem>
+                <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
+                <ComboBoxItem Content="Mango Shake"></ComboBoxItem>
+            </ComboBox>
+            
         </StackPanel>
     </Grid>
 </Window>
