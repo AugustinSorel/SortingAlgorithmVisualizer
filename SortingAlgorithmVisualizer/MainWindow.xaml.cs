@@ -105,7 +105,8 @@ namespace SortingAlgorithmVisualizer
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            DisplayArray();
+            //DisplayArray();
+            MessageBox.Show("Start");
         }
 
         #region Property Changed Event Handler

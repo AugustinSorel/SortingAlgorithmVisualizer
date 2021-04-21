@@ -46,8 +46,7 @@
             </Slider>
 
             <Button Name="startButton" Click="StartButton_Click" ToolTip="Start the animation (s)">
-                <Path Height="30" Width="30" Stroke="#2ecc71" Stretch="Uniform" Fill="#27ae60" 
-                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Path Stroke="#2ecc71" Fill="#27ae60">
                     <Path.Data>
                         <PathGeometry Figures="M 0 0 L 0 13 L 10 6 Z"/>
                     </Path.Data>
@@ -55,8 +54,7 @@
             </Button>
 
             <Button Name="pauseButton" Click="PauseButton_Click" ToolTip="Pause/Resume the animation (p)">
-                <Path Height="30" Width="30" Stroke="#34495e" Stretch="Uniform" Fill="#2c3e50" 
-                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Path Stroke="#34495e" Fill="#2c3e50">
                     <Path.Data>
                         <PathGeometry Figures="M 0 0 L 2 0 L 2 7 L 0 7 Z M 3 0 L 5 0 L 5 7 L 3 7 Z"/>
                     </Path.Data>
@@ -64,8 +62,7 @@
             </Button>
 
             <Button Name="abortButton" Click="AbortButton_Click" ToolTip="abort the animation (a)">
-                <Path Height="30" Width="30" Stroke="#e74c3c" Stretch="Uniform" Fill="#c0392b" 
-                      StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Path Stroke="#e74c3c" Fill="#c0392b">
                     <Path.Data>
                         <PathGeometry Figures="M 0 0 L 5 0 L 5 5 L 0 5 Z"/>
                     </Path.Data>
