@@ -17,6 +17,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/ButtonDictionary.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/SliderDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -30,7 +31,11 @@
         <Canvas Name="canvas"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            
+
+            <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size">
+
+            </Slider>
+
             <Button Name="startButton" Click="StartButton_Click" ToolTip="Start the animation (s)">
                 <Path Height="30" Width="30" Stroke="#2ecc71" Stretch="Uniform" Fill="#27ae60" 
                       StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
@@ -57,7 +62,7 @@
                     </Path.Data>
                 </Path>
             </Button>
-            
+
         </StackPanel>
     </Grid>
 </Window>
