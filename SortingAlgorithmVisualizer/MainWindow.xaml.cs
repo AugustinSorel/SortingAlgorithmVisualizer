@@ -124,7 +124,7 @@ namespace SortingAlgorithmVisualizer
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             //DisplayArray();
-            MessageBox.Show("Start");
+            MessageBox.Show(algoNameComboBox.SelectedItem.ToString());
         }
 
         #region Property Changed Event Handler

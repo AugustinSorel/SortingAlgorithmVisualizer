@@ -71,15 +71,8 @@
                 </Path>
             </Button>
 
-            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="90">
-                <ComboBoxItem Content="Coffie"></ComboBoxItem>
-                <ComboBoxItem Content="Tea"></ComboBoxItem>
-                <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
-                <ComboBoxItem Content="Milk"></ComboBoxItem>
-                <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
-                <ComboBoxItem Content="Mango Shake"></ComboBoxItem>
-            </ComboBox>
-            
+            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="90"/>
+
         </StackPanel>
     </Grid>
 </Window>
