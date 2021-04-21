@@ -11,6 +11,7 @@
         Background="{Binding Source={x:Static local:GlobalColors.BackgroundColor}}"
         KeyDown="Window_KeyDown"
         ContentRendered="Window_ContentRendered"
+        Name="mainWindow"
         Title="MainWindow" Height="500" Width="500">
 
     <Window.Resources>
@@ -35,10 +36,10 @@
             <TextBlock Foreground="{Binding Source={x:Static local:GlobalColors.ForegroundColor}}" 
                        VerticalAlignment="Center" Margin="10" FontSize="20">
                 <Run Text="Array Size: "/>
-                <Run Text="10"/>
+                <Run Text="{Binding Path=ArraySize}"/>
             </TextBlock>
             
-            <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size">
+            <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=ArraySize}">
 
             </Slider>
 

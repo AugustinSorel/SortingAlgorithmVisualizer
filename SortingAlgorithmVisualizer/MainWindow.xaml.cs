@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,17 +11,29 @@ namespace SortingAlgorithmVisualizer
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private int[] randomInts;
+
+        private int arraySize;
+
+        public int ArraySize
+        {
+            get { return arraySize; }
+            set { arraySize = value; NotifyPropertyChanged("ArraySize"); }
+        }
+
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            arraySize = 10;
         }
 
         private void SetUpArray()
         {
-            randomInts = new int[10];
+            randomInts = new int[arraySize];
             Random random = new Random();
             for (int i = 0; i < randomInts.Length; i++)
                 randomInts[i] = random.Next(0, (int)canvas.ActualHeight);
@@ -86,5 +99,13 @@ namespace SortingAlgorithmVisualizer
         {
             DisplayArray();
         }
+
+        #region Property Changed Event Handler
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

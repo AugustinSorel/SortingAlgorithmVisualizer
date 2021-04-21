@@ -76,7 +76,7 @@
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Minimum" Value="1"/>
-        <Setter Property="Maximum" Value="10"/>
+        <Setter Property="Maximum" Value="100"/>
         <Setter Property="Margin" Value="10"/>
         
         <Style.Triggers>
