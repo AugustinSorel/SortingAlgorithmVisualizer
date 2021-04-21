@@ -20,12 +20,14 @@ namespace SortingAlgorithmVisualizer
         {
             get { return arraySize; }
             set 
-            { 
-                arraySize = value; 
-                NotifyPropertyChanged("ArraySize"); 
+            {
+                if (value != arraySize && value > 0 && value < 101)
+                {
+                    arraySize = value;
+                    NotifyPropertyChanged("ArraySize");
+                }
             }
         }
-
 
         public MainWindow()
         {
@@ -53,7 +55,10 @@ namespace SortingAlgorithmVisualizer
                 AbortButton_Click(null, null);
             else if (e.Key == Key.S)
                 StartButton_Click(null, null);
-
+            else if (e.Key == Key.Left)
+                arraySizeSlider.Value -= 1;
+            else if (e.Key == Key.Right)
+                arraySizeSlider.Value += 1;
         }
         #endregion
 
@@ -111,7 +116,7 @@ namespace SortingAlgorithmVisualizer
         }
         #endregion
 
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void ArraySizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             DisplayArray();
         }
