@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/ButtonDictionary.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/SliderDictionary.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/PathDictionary.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SortingAlgorithmVisualizer;component/RessourceDictionaries/ComboBoxDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -70,7 +71,7 @@
                 </Path>
             </Button>
 
-            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="70">
+            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="60">
                 <ComboBoxItem Content="Coffie"></ComboBoxItem>
                 <ComboBoxItem Content="Tea"></ComboBoxItem>
                 <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
