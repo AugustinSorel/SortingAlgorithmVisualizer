@@ -32,6 +32,12 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
+            <TextBlock Foreground="{Binding Source={x:Static local:GlobalColors.ForegroundColor}}" 
+                       VerticalAlignment="Center" Margin="10" FontSize="20">
+                <Run Text="Array Size: "/>
+                <Run Text="10"/>
+            </TextBlock>
+            
             <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size">
 
             </Slider>
