@@ -39,7 +39,9 @@
                 <Run Text="{Binding Path=ArraySize}"/>
             </TextBlock>
             
-            <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=ArraySize}">
+            <Slider Width="100" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=ArraySize}"
+                    ValueChanged="Slider_ValueChanged"
+                    >
 
             </Slider>
 

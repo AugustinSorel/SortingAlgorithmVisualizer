@@ -14,13 +14,16 @@ namespace SortingAlgorithmVisualizer
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private int[] randomInts;
-
         private int arraySize;
 
         public int ArraySize
         {
             get { return arraySize; }
-            set { arraySize = value; NotifyPropertyChanged("ArraySize"); }
+            set 
+            { 
+                arraySize = value; 
+                NotifyPropertyChanged("ArraySize"); 
+            }
         }
 
 
@@ -107,5 +110,10 @@ namespace SortingAlgorithmVisualizer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            DisplayArray();
+        }
     }
 }
