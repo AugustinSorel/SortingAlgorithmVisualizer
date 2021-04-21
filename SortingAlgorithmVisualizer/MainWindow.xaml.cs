@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,8 +34,24 @@ namespace SortingAlgorithmVisualizer
         public MainWindow()
         {
             InitializeComponent();
+            PopulateComboBox();
             DataContext = this;
             arraySize = 10;
+        }
+
+        private void PopulateComboBox()
+        {
+            List<string> ClassList = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(x => x.GetTypes())
+                .Where(x => typeof(IToDelete).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
+                .Select(x => x.Name)
+                .ToList();
+            ClassList.Sort();
+
+            foreach (string entry in ClassList)
+                algoNameComboBox.Items.Add(entry);
+
+            algoNameComboBox.SelectedIndex = 0;
         }
 
         private void SetUpArray()

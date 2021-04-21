@@ -71,7 +71,7 @@
                 </Path>
             </Button>
 
-            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="60">
+            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="90">
                 <ComboBoxItem Content="Coffie"></ComboBoxItem>
                 <ComboBoxItem Content="Tea"></ComboBoxItem>
                 <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
