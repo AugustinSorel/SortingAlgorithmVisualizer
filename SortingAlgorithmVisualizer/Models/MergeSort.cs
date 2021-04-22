@@ -5,9 +5,12 @@ namespace SortingAlgorithmVisualizer
 {
     class MergeSort : ISortAlo
     {
-        public MergeSort()
+        private readonly int[] arrayInt;
+
+        public MergeSort(int[] arrayInt)
         {
             MessageBox.Show(this.GetType().Name);
+            this.arrayInt = arrayInt;
         }
 
         public void NextStep()

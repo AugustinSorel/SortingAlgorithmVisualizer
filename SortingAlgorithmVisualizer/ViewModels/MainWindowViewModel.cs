@@ -25,6 +25,14 @@ namespace SortingAlgorithmVisualizer
                 }
             }
         }
+
+        public int[] RandomInts
+        {
+            get { return randomInts; }
+            set { randomInts = value; }
+        }
+
+
         public MainWindowViewModel(ComboBox comboBox)
         {
             arraySize = 10;

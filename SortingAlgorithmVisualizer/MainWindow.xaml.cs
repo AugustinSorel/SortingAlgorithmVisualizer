@@ -42,6 +42,8 @@ namespace SortingAlgorithmVisualizer
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
+            mainWindowViewModel.DisplayArray(canvas);
+
             string sortEngine = algoNameComboBox.SelectedItem.ToString();
 
             Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + sortEngine);
@@ -50,11 +52,13 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(null);
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel.RandomInts });
                 while (!se.IsSorted())//&& (!bgw.CancellationPending))
                 {
                     se.NextStep();
                 }
+
+                
             }
             catch
             {
