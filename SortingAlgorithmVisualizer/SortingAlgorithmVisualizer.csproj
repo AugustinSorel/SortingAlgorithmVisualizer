@@ -75,7 +75,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BubbleSort.cs" />
     <Compile Include="Global\GlobalColors.cs" />
+    <Compile Include="ISortAlo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +88,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MergeSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
