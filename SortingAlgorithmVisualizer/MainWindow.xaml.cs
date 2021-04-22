@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -124,10 +125,10 @@ namespace SortingAlgorithmVisualizer
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             string sortEngine = algoNameComboBox.SelectedItem.ToString();
+
+            Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + sortEngine);
             
-            Type type = Type.GetType("SortingAlgorithmVisualizer." + sortEngine);
-            
-            System.Reflection.ConstructorInfo[] ctors = type.GetConstructors();
+            ConstructorInfo[] ctors = type.GetConstructors();
 
             try
             {
@@ -172,7 +173,7 @@ namespace SortingAlgorithmVisualizer
 
         public void NextStep()
         {
-
+            MessageBox.Show("Next set");
         }
 
         public void ReDraw()
