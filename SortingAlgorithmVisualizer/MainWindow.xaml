@@ -12,7 +12,7 @@
         KeyDown="Window_KeyDown"
         ContentRendered="Window_ContentRendered"
         Name="mainWindow"
-        Title="MainWindow" Height="500" Width="500">
+        Title="MainWindow" Height="600" Width="600">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -71,7 +71,7 @@
                 </Path>
             </Button>
 
-            <ComboBox Name="algoNameComboBox" Margin="5, 10, 5, 10" Width="90"/>
+            <ComboBox Name="algoNameComboBox" Margin="10" Width="150"/>
 
         </StackPanel>
     </Grid>

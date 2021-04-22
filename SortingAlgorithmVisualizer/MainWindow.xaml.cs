@@ -43,7 +43,7 @@ namespace SortingAlgorithmVisualizer
         {
             List<string> ClassList = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IToDelete).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
+                .Where(x => typeof(ISortAlo).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
                 .Select(x => x.Name)
                 .ToList();
             ClassList.Sort();
@@ -124,7 +124,8 @@ namespace SortingAlgorithmVisualizer
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             //DisplayArray();
-            MessageBox.Show(algoNameComboBox.SelectedItem.ToString());
+            //MessageBox.Show(algoNameComboBox.SelectedItem.ToString());
+
         }
 
         #region Property Changed Event Handler
@@ -139,5 +140,36 @@ namespace SortingAlgorithmVisualizer
         {
             DisplayArray();
         }
+    }
+
+    class BubbleSort : ISortAlo
+    {
+        public void Sort()
+        {
+
+        }
+
+        public BubbleSort()
+        {
+            MessageBox.Show(this.GetType().Name);
+        }
+    }
+
+    class MergeSort : ISortAlo
+    {
+        public void Sort()
+        {
+
+        }
+
+        public MergeSort()
+        {
+            MessageBox.Show(this.GetType().Name);
+        }
+    }
+
+    interface ISortAlo
+    {
+        void Sort();
     }
 }

@@ -82,7 +82,7 @@
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="MinHeight" Value="21" />
-                <Setter Property="MinWidth" Value="80" />
+                <Setter Property="MinWidth" Value="100" />
                 <Setter Property="Template" Value="{StaticResource Slider}" />
             </Trigger>
         </Style.Triggers>
