@@ -123,8 +123,24 @@ namespace SortingAlgorithmVisualizer
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            //DisplayArray();
-            //MessageBox.Show(algoNameComboBox.SelectedItem.ToString());
+            string sortEngine = algoNameComboBox.SelectedItem.ToString();
+            
+            Type type = Type.GetType("SortingAlgorithmVisualizer." + sortEngine);
+            
+            System.Reflection.ConstructorInfo[] ctors = type.GetConstructors();
+
+            try
+            {
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(null);
+                while (!se.IsSorted() )//&& (!bgw.CancellationPending))
+                {
+                    se.NextStep();
+                }
+            }
+            catch
+            {
+                MessageBox.Show(":(");
+            }
 
         }
 
@@ -144,32 +160,55 @@ namespace SortingAlgorithmVisualizer
 
     class BubbleSort : ISortAlo
     {
-        public void Sort()
+        public BubbleSort()
+        {
+            MessageBox.Show(this.GetType().Name);
+        }
+
+        public bool IsSorted()
+        {
+            return false;
+        }
+
+        public void NextStep()
         {
 
         }
 
-        public BubbleSort()
+        public void ReDraw()
         {
-            MessageBox.Show(this.GetType().Name);
+
         }
     }
 
     class MergeSort : ISortAlo
     {
-        public void Sort()
-        {
-
-        }
-
         public MergeSort()
         {
             MessageBox.Show(this.GetType().Name);
+        }
+
+        public void NextStep()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReDraw()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsSorted()
+        {
+            throw new NotImplementedException();
         }
     }
 
     interface ISortAlo
     {
-        void Sort();
+        void NextStep();
+        void ReDraw();
+
+        bool IsSorted();
     }
 }
