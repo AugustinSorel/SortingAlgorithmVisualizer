@@ -44,33 +44,9 @@ namespace SortingAlgorithmVisualizer
             DrawBar(v, arrayInt[v]);
         }
 
-        private async void DrawBar(int position, int height)
+        private void DrawBar(int position, int height)
         {
-            MainWindow mainWindow = Application.Current.Windows[0] as MainWindow;
-            mainWindow.canvas.Children.Clear();
-
-            for (int i = 0; i < arrayInt.Length; i++)
-            {
-                Rectangle rectangle = new Rectangle()
-                {
-                    Height = arrayInt[i],
-                    Width = mainWindow.canvas.ActualWidth / arrayInt.Length,
-                    Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
-                    StrokeThickness = 1,
-                    Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
-                };
-
-                mainWindow.canvas.Children.Add(rectangle);
-                Canvas.SetLeft(rectangle, i * rectangle.Width);
-                Canvas.SetTop(rectangle, mainWindow.canvas.ActualHeight - rectangle.Height);
-
-                await Task.Delay(1000);
-            }
-        }
-
-        public void ReDraw()
-        {
-
+           
         }
     }
 }

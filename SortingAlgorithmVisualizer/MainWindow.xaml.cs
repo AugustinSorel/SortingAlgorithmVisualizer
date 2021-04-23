@@ -57,8 +57,6 @@ namespace SortingAlgorithmVisualizer
                 {
                     se.NextStep();
                 }
-
-                
             }
             catch
             {
