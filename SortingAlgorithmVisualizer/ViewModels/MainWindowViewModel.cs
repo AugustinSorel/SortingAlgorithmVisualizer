@@ -80,6 +80,7 @@ namespace SortingAlgorithmVisualizer
                     Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
                     StrokeThickness = 1,
                     Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
+                    Tag = i,
                 };
 
                 canvas.Children.Add(rectangle);

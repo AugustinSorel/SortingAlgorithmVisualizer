@@ -40,13 +40,26 @@ namespace SortingAlgorithmVisualizer
             arrayInt[i] = arrayInt[i + 1];
             arrayInt[i + 1] = temp;
 
-            DrawBar(i, arrayInt[i]);
-            DrawBar(v, arrayInt[v]);
+            DrawBar(i, arrayInt[i], i);
+            //DrawBar(v, arrayInt[v], i);
         }
 
-        private void DrawBar(int position, int height)
+        private MainWindow mainWindow = Application.Current.Windows[0] as MainWindow;
+
+        private void DrawBar(int position, int height, int tag)
         {
-           
+            Rectangle r = mainWindow.canvas.Children[tag] as Rectangle;
+            Rectangle r2 = mainWindow.canvas.Children[tag + 1] as Rectangle;
+
+            r.Fill = Brushes.Red;
+            MessageBox.Show("");
+            Canvas.SetLeft(r, r.Width * tag + r.Width);
+            MessageBox.Show((r.Width * tag + r.Width).ToString());
+
+            r2.Fill = Brushes.Blue;
+            MessageBox.Show("");
+            Canvas.SetLeft(r2, r2.Width * (tag+1) - r.Width);
+            MessageBox.Show((r2.Width * (tag+1) - r.Width).ToString());
         }
     }
 }
