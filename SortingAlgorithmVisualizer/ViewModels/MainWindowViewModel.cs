@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -55,6 +57,25 @@ namespace SortingAlgorithmVisualizer
             comboBox.SelectedIndex = 0;
         }
 
+        internal void Start(string algoName)
+        {
+            Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + algoName);
+            ConstructorInfo[] ctors = type.GetConstructors();
+
+            try
+            {
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { this });
+                while (!se.IsSorted())//&& (!bgw.CancellationPending))
+                {
+                    se.NextStep();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         internal void DisplayArray(Canvas canvas)
         {
             this.canvas = canvas;
@@ -93,7 +114,7 @@ namespace SortingAlgorithmVisualizer
 
         internal void DrawRectangles(int tag, int tag2)
         {
-            List<Rectangle> rectangles = rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
 
             Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
             Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);

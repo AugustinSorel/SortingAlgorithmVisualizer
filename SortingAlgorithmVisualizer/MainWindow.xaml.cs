@@ -43,26 +43,7 @@ namespace SortingAlgorithmVisualizer
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             mainWindowViewModel.DisplayArray(canvas);
-
-            string sortEngine = algoNameComboBox.SelectedItem.ToString();
-
-            Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + sortEngine);
-
-            ConstructorInfo[] ctors = type.GetConstructors();
-
-            try
-            {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel });
-                while (!se.IsSorted())//&& (!bgw.CancellationPending))
-                {
-                    se.NextStep();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            mainWindowViewModel.Start(algoNameComboBox.SelectedItem.ToString());
         }
 
         #region Key Down Event
