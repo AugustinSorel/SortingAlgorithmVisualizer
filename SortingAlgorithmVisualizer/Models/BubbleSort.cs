@@ -30,36 +30,41 @@ namespace SortingAlgorithmVisualizer
         {
             for (int i = 0; i < arrayInt.Count() - 1; i++)
                 if (arrayInt[i] > arrayInt[i + 1])
+                {
+                    MessageBox.Show("Start");
                     Swap(i, i + 1);
-
+                }
         }
 
         private void Swap(int i, int v)
         {
-            int temp = arrayInt[i];
-            arrayInt[i] = arrayInt[i + 1];
-            arrayInt[i + 1] = temp;
+            int temp = arrayInt[i + 1];
+            arrayInt[i+1] = arrayInt[i];
+            arrayInt[i] = temp;
 
-            DrawBar(i, arrayInt[i], i);
-            //DrawBar(v, arrayInt[v], i);
+            DrawBar(i, v);
         }
 
         private MainWindow mainWindow = Application.Current.Windows[0] as MainWindow;
 
-        private void DrawBar(int position, int height, int tag)
+        private void DrawBar(int index, int index2)
         {
-            Rectangle r = mainWindow.canvas.Children[tag] as Rectangle;
-            Rectangle r2 = mainWindow.canvas.Children[tag + 1] as Rectangle;
+            // USE TAG INSTEAD.
+            Rectangle r = mainWindow.canvas.Children[index] as Rectangle;
+            Rectangle r2 = mainWindow.canvas.Children[index2] as Rectangle;
 
             r.Fill = Brushes.Red;
-            MessageBox.Show("");
-            Canvas.SetLeft(r, r.Width * tag + r.Width);
-            MessageBox.Show((r.Width * tag + r.Width).ToString());
-
             r2.Fill = Brushes.Blue;
-            MessageBox.Show("");
-            Canvas.SetLeft(r2, r2.Width * (tag+1) - r.Width);
-            MessageBox.Show((r2.Width * (tag+1) - r.Width).ToString());
+            MessageBox.Show("index: " + index.ToString());
+
+            Canvas.SetLeft(r, r.Width * index + r.Width);
+            MessageBox.Show((r.Width * index + r.Width).ToString());
+
+            Canvas.SetLeft(r2, r2.Width * index2 - r.Width);
+            MessageBox.Show((r2.Width * index2 - r.Width).ToString());
+
+            r.Fill = Brushes.Black;
+            r2.Fill = Brushes.Black;
         }
     }
 }
