@@ -52,7 +52,7 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel.RandomInts });
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel });
                 while (!se.IsSorted())//&& (!bgw.CancellationPending))
                 {
                     se.NextStep();

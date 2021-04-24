@@ -12,6 +12,7 @@ namespace SortingAlgorithmVisualizer
     {
         private int[] randomInts;
         private int arraySize;
+        private Canvas canvas;
 
         public int ArraySize
         {
@@ -56,19 +57,20 @@ namespace SortingAlgorithmVisualizer
 
         internal void DisplayArray(Canvas canvas)
         {
-            SetUpArray(canvas.ActualHeight);
-            AddRectanglesToCanvas(canvas);
+            this.canvas = canvas;
+            SetUpArray();
+            AddRectanglesToCanvas();
         }
 
-        private void SetUpArray(double actualHeight)
+        private void SetUpArray()
         {
             randomInts = new int[arraySize];
             Random random = new Random();
             for (int i = 0; i < randomInts.Length; i++)
-                randomInts[i] = random.Next(0, (int)actualHeight);
+                randomInts[i] = random.Next(0, (int)canvas.ActualHeight);
         }
 
-        private void AddRectanglesToCanvas(Canvas canvas)
+        private void AddRectanglesToCanvas()
         {
             canvas.Children.Clear();
             for (int i = 0; i < randomInts.Length; i++)
@@ -87,6 +89,20 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
+        }
+
+        internal void DrawRectangles(int tag, int tag2)
+        {
+            List<Rectangle> rectangles = rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+
+            Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
+            Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);
+
+            rectangles[0].Tag = (int)rectangles[0].Tag + 1;
+            rectangles[1].Tag = (int)rectangles[1].Tag - 1;
+
+            //collection[0].Fill = Brushes.Red;
+            //collection[1].Fill = Brushes.Blue;
         }
 
         #region Property Changed Event Handler
