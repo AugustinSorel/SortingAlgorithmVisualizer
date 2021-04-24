@@ -9,6 +9,9 @@ namespace SortingAlgorithmVisualizer
     {
         private int[] randomInts;
         private int arraySize;
+        BackgroundWorker backgroundWorker;
+        private string algoName;
+        private MainWindowViewModel mainWindowViewModel;
 
         public int ArraySize
         {
@@ -32,16 +35,24 @@ namespace SortingAlgorithmVisualizer
         public SortingEngine()
         {
             arraySize = 10;
+            backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Finish);
         }
 
-        internal void Start(string algoName, MainWindowViewModel mainWindowViewModel)
+        private void Finish(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("End...");
+        }
+
+        private void DoWork(object sender, DoWorkEventArgs e)
         {
             Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + algoName);
             ConstructorInfo[] ctors = type.GetConstructors();
 
             try
             {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] {  mainWindowViewModel, randomInts });
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
                 while (!se.IsSorted())//&& (!bgw.CancellationPending))
                 {
                     se.NextStep();
@@ -51,6 +62,15 @@ namespace SortingAlgorithmVisualizer
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        internal void Start(string algoName, MainWindowViewModel mainWindowViewModel)
+        {
+            this.algoName = algoName;
+            this.mainWindowViewModel = mainWindowViewModel;
+
+            if(!backgroundWorker.IsBusy)
+                backgroundWorker.RunWorkerAsync();
         }
 
         internal void SetUpArray(System.Windows.Controls.Canvas canvas)

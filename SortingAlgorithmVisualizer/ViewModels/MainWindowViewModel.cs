@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -68,13 +69,17 @@ namespace SortingAlgorithmVisualizer
 
         internal void DrawRectangles(int tag, int tag2)
         {
-            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+            Application.Current.Dispatcher.Invoke(new Action(() => {
 
-            Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
-            Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);
+                List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
 
-            rectangles[0].Tag = (int)rectangles[0].Tag + 1;
-            rectangles[1].Tag = (int)rectangles[1].Tag - 1;
+                Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
+                Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);
+
+                rectangles[0].Tag = (int)rectangles[0].Tag + 1;
+                rectangles[1].Tag = (int)rectangles[1].Tag - 1;
+
+            }));
 
             //collection[0].Fill = Brushes.Red;
             //collection[1].Fill = Brushes.Blue;
