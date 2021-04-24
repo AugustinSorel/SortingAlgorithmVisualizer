@@ -58,28 +58,37 @@ namespace SortingAlgorithmVisualizer
         {
             // USE TAG INSTEAD.
 
-            foreach (var item in mainWindow.canvas.Children.Cast<Rectangle>())
-            {
-                if ((int)item.Tag == index)
-                {
-                    item.Fill = Brushes.Red;
-                    item.Tag = (int)item.Tag + 1;
-                    Canvas.SetLeft(item, item.Width * index + item.Width);
-                    MessageBox.Show("");
-                    //item.Fill = Brushes.Black;
-                    continue;
-                }
-                else if ((int)item.Tag == index2)
-                {
-                    item.Fill = Brushes.Blue;
-                    item.Tag = (int)item.Tag - 1;
+            //foreach (var item in mainWindow.canvas.Children.Cast<Rectangle>())
+            //{
+                List<Rectangle> collection = new List<Rectangle>();
+                collection = mainWindow.canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == index || (int)x.Tag == index2).ToList();
 
-                    Canvas.SetLeft(item, item.Width * index2 - item.Width);
-                    MessageBox.Show("");
-                    //item.Fill = Brushes.Black;
-                    continue;
-                }
-            }
+                Canvas.SetLeft(collection[0], collection[0].Width * index + collection[0].Width);
+                Canvas.SetLeft(collection[1], collection[1].Width * index2 - collection[1].Width);
+
+                collection[0].Tag = (int)collection[0].Tag + 1;
+                collection[1].Tag = (int)collection[1].Tag - 1;
+
+                //if ((int)item.Tag == index)
+                //{
+                //    item.Fill = Brushes.Red;
+                //    item.Tag = (int)item.Tag + 1;
+                //    Canvas.SetLeft(item, item.Width * index + item.Width);
+                //    //MessageBox.Show("");
+                //    //item.Fill = Brushes.Black;
+                //    continue;
+                //}
+                //else if ((int)item.Tag == index2)
+                //{
+                //    item.Fill = Brushes.Blue;
+                //    item.Tag = (int)item.Tag - 1;
+
+                //    Canvas.SetLeft(item, item.Width * index2 - item.Width);
+                //    //MessageBox.Show("");
+                //    //item.Fill = Brushes.Black;
+                //    continue;
+                //}
+            //}
 
             //Rectangle r = mainWindow.canvas.Children[index] as Rectangle;
             //Rectangle r2 = mainWindow.canvas.Children[index2] as Rectangle;

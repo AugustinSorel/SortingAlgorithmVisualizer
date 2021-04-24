@@ -58,9 +58,9 @@ namespace SortingAlgorithmVisualizer
                     se.NextStep();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show(":(");
+                MessageBox.Show(ex.Message);
             }
 
         }
