@@ -61,7 +61,7 @@ namespace SortingAlgorithmVisualizer
             {
                 Application.Current.Dispatcher.Invoke(new Action(() => {
 
-                   ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
+                    ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
                     while (!se.IsSorted())//&& (!bgw.CancellationPending))
                     {
                         se.NextStep();

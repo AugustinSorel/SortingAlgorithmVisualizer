@@ -69,7 +69,6 @@ namespace SortingAlgorithmVisualizer
 
         internal void DrawRectangles(int tag, int tag2)
         {
-            
             List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
 
             Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
@@ -77,7 +76,6 @@ namespace SortingAlgorithmVisualizer
 
             rectangles[0].Tag = (int)rectangles[0].Tag + 1;
             rectangles[1].Tag = (int)rectangles[1].Tag - 1;
-
 
             //collection[0].Fill = Brushes.Red;
             //collection[1].Fill = Brushes.Blue;

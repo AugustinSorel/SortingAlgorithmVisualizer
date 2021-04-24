@@ -44,9 +44,7 @@
             <Slider Name="arraySizeSlider" VerticalAlignment="Center" ToolTip="Array Size" 
                     Value="{Binding Path=SortingEngine.ArraySize}"
                     ValueChanged="ArraySizeSlider_ValueChanged"
-                    >
-
-            </Slider>
+                    />
 
             <Button Name="startButton" Click="StartButton_Click" ToolTip="Start the animation (s)">
                 <Path Stroke="#2ecc71" Fill="#27ae60">

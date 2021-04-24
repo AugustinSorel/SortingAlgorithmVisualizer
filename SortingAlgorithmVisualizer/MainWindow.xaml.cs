@@ -65,6 +65,7 @@ namespace SortingAlgorithmVisualizer
     }
 }
 /* ***TODO****
-1) TODO: Testing class
-3) TODO: Background worker
+1) TODO: Sleeping
+2) TODO: Colors
+3) TODO: Testing class
  */
