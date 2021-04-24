@@ -4,19 +4,19 @@ namespace SortingAlgorithmVisualizer
 {
     class BubbleSort : ISortAlo
     {
-        private int[] RandomInts;
+        private int[] randomInts;
         private readonly MainWindowViewModel mainWindowViewModel;
 
-        public BubbleSort(MainWindowViewModel mainWindowViewModel)
+        public BubbleSort(MainWindowViewModel mainWindowViewModel, int[] randomInts)
         {
-            this.RandomInts = mainWindowViewModel.RandomInts;
+            this.randomInts = randomInts;
             this.mainWindowViewModel = mainWindowViewModel;
         }
 
         public bool IsSorted()
         {
-            for (int i = 0; i < RandomInts.Count() - 1; i++)
-                if (RandomInts[i] > RandomInts[i + 1])
+            for (int i = 0; i < randomInts.Count() - 1; i++)
+                if (randomInts[i] > randomInts[i + 1])
                     return false;
 
             return true;
@@ -24,16 +24,16 @@ namespace SortingAlgorithmVisualizer
 
         public void NextStep()
         {
-            for (int i = 0; i < RandomInts.Count() - 1; i++)
-                if (RandomInts[i] > RandomInts[i + 1])
+            for (int i = 0; i < randomInts.Count() - 1; i++)
+                if (randomInts[i] > randomInts[i + 1])
                     Swap(i, i + 1);
         }
 
         private void Swap(int i, int v)
         {
-            int temp = RandomInts[i + 1];
-            RandomInts[i+1] = RandomInts[i];
-            RandomInts[i] = temp;
+            int temp = randomInts[i + 1];
+            randomInts[i+1] = randomInts[i];
+            randomInts[i] = temp;
 
             DrawBar(i, v);
         }

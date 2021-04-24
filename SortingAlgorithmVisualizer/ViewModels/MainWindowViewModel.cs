@@ -1,44 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace SortingAlgorithmVisualizer
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel
     {
-        private int[] randomInts;
-        private int arraySize;
         private Canvas canvas;
-
-        public int ArraySize
-        {
-            get { return arraySize; }
-            set
-            {
-                if (value != arraySize && value > 0 && value < 101)
-                {
-                    arraySize = value;
-                    NotifyPropertyChanged("ArraySize");
-                }
-            }
-        }
-
-        public int[] RandomInts
-        {
-            get { return randomInts; }
-            set { randomInts = value; }
-        }
-
+        public SortingEngine sortingEngine { get; set; }
 
         public MainWindowViewModel(ComboBox comboBox)
         {
-            arraySize = 10;
+            sortingEngine = new SortingEngine();
             PopulateComboBox(comboBox);
         }
 
@@ -59,47 +35,25 @@ namespace SortingAlgorithmVisualizer
 
         internal void Start(string algoName)
         {
-            Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + algoName);
-            ConstructorInfo[] ctors = type.GetConstructors();
-
-            try
-            {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { this });
-                while (!se.IsSorted())//&& (!bgw.CancellationPending))
-                {
-                    se.NextStep();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            sortingEngine.Start(algoName, this);
         }
 
         internal void DisplayArray(Canvas canvas)
         {
             this.canvas = canvas;
-            SetUpArray();
+            sortingEngine.SetUpArray(canvas);
             AddRectanglesToCanvas();
-        }
-
-        private void SetUpArray()
-        {
-            randomInts = new int[arraySize];
-            Random random = new Random();
-            for (int i = 0; i < randomInts.Length; i++)
-                randomInts[i] = random.Next(0, (int)canvas.ActualHeight);
         }
 
         private void AddRectanglesToCanvas()
         {
             canvas.Children.Clear();
-            for (int i = 0; i < randomInts.Length; i++)
+            for (int i = 0; i < sortingEngine.RandomInts.Length; i++)
             {
                 Rectangle rectangle = new Rectangle()
                 {
-                    Height = randomInts[i],
-                    Width = canvas.ActualWidth / randomInts.Length,
+                    Height = sortingEngine.RandomInts[i],
+                    Width = canvas.ActualWidth / sortingEngine.RandomInts.Length,
                     Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
                     StrokeThickness = 1,
                     Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
@@ -125,13 +79,5 @@ namespace SortingAlgorithmVisualizer
             //collection[0].Fill = Brushes.Red;
             //collection[1].Fill = Brushes.Blue;
         }
-
-        #region Property Changed Event Handler
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

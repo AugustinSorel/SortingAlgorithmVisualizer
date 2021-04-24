@@ -88,6 +88,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SortingEngine.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\MergeSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
