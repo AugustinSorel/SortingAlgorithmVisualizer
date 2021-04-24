@@ -10,11 +10,11 @@ namespace SortingAlgorithmVisualizer
     class MainWindowViewModel
     {
         private Canvas canvas;
-        public SortingEngine sortingEngine { get; set; }
+        public SortingEngine SortingEngine { get; set; }
 
         public MainWindowViewModel(ComboBox comboBox)
         {
-            sortingEngine = new SortingEngine();
+            SortingEngine = new SortingEngine();
             PopulateComboBox(comboBox);
         }
 
@@ -35,25 +35,25 @@ namespace SortingAlgorithmVisualizer
 
         internal void Start(string algoName)
         {
-            sortingEngine.Start(algoName, this);
+            SortingEngine.Start(algoName, this);
         }
 
         internal void DisplayArray(Canvas canvas)
         {
             this.canvas = canvas;
-            sortingEngine.SetUpArray(canvas);
+            SortingEngine.SetUpArray(canvas);
             AddRectanglesToCanvas();
         }
 
         private void AddRectanglesToCanvas()
         {
             canvas.Children.Clear();
-            for (int i = 0; i < sortingEngine.RandomInts.Length; i++)
+            for (int i = 0; i < SortingEngine.RandomInts.Length; i++)
             {
                 Rectangle rectangle = new Rectangle()
                 {
-                    Height = sortingEngine.RandomInts[i],
-                    Width = canvas.ActualWidth / sortingEngine.RandomInts.Length,
+                    Height = SortingEngine.RandomInts[i],
+                    Width = canvas.ActualWidth / SortingEngine.RandomInts.Length,
                     Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
                     StrokeThickness = 1,
                     Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,

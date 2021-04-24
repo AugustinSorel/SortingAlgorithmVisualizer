@@ -5,12 +5,14 @@ namespace SortingAlgorithmVisualizer
 {
     class MergeSort : ISortAlo
     {
-        private readonly int[] arrayInt;
+        private int[] randomInts;
+        private readonly MainWindowViewModel mainWindowViewModel;
 
-        public MergeSort(int[] arrayInt)
+        public MergeSort(MainWindowViewModel mainWindowViewModel, int[] randomInts)
         {
+            this.randomInts = randomInts;
+            this.mainWindowViewModel = mainWindowViewModel;
             MessageBox.Show(this.GetType().Name);
-            this.arrayInt = arrayInt;
         }
 
         public void NextStep()

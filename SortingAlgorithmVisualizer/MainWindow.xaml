@@ -38,10 +38,11 @@
             <TextBlock Foreground="{Binding Source={x:Static local:GlobalColors.ForegroundColor}}" 
                        VerticalAlignment="Center" Margin="10" FontSize="20">
                 <Run Text="Array Size: "/>
-                <Run Text="{Binding Path=sortingEngine.ArraySize}"/>
+                <Run Text="{Binding Path=SortingEngine.ArraySize}"/>
             </TextBlock>
 
-            <Slider Name="arraySizeSlider" VerticalAlignment="Center" ToolTip="Array Size" Value="{Binding Path=sortingEngine.ArraySize}"
+            <Slider Name="arraySizeSlider" VerticalAlignment="Center" ToolTip="Array Size" 
+                    Value="{Binding Path=SortingEngine.ArraySize}"
                     ValueChanged="ArraySizeSlider_ValueChanged"
                     >
 
