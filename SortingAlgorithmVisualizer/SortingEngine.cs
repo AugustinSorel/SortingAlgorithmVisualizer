@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -38,6 +39,12 @@ namespace SortingAlgorithmVisualizer
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Finish);
+            backgroundWorker.ProgressChanged += new ProgressChangedEventHandler(Progress);
+        }
+
+        private void Progress(object sender, ProgressChangedEventArgs e)
+        {
+            // report the progress here...
         }
 
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
@@ -52,11 +59,15 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
-                while (!se.IsSorted())//&& (!bgw.CancellationPending))
-                {
-                    se.NextStep();
-                }
+                Application.Current.Dispatcher.Invoke(new Action(() => {
+
+                   ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
+                    while (!se.IsSorted())//&& (!bgw.CancellationPending))
+                    {
+                        se.NextStep();
+                    }
+                }));
+                
             }
             catch (Exception ex)
             {
