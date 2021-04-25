@@ -91,8 +91,8 @@ namespace SortingAlgorithmVisualizer
             rectangles[0].Tag = (int)rectangles[0].Tag + 1;
             rectangles[1].Tag = (int)rectangles[1].Tag - 1;
 
-            rectangles[0].Fill = Brushes.Red;
-            rectangles[1].Fill = Brushes.Blue;
+            rectangles[0].Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
+            rectangles[1].Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
 
             oldRectangles[0] = rectangles[0];
             oldRectangles[1] = rectangles[1];
