@@ -59,14 +59,17 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                Application.Current.Dispatcher.Invoke(new Action(() => {
-
                     ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
+                    
                     while (!se.IsSorted())//&& (!bgw.CancellationPending))
                     {
-                        se.NextStep();
+                        //Application.Current.Dispatcher.Invoke(new Action(() => {
+
+                            se.NextStep();
+                        //}));
+                        //Thread.Sleep(1000);
                     }
-                }));
+                
                 
             }
             catch (Exception ex)
