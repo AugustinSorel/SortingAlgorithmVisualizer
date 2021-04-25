@@ -25,7 +25,7 @@ namespace SortingAlgorithmVisualizer
 
         private void ArraySizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (mainWindowViewModel != null)    
+            if (mainWindowViewModel != null && !mainWindowViewModel.SortingEngine.BackgroundWorker.IsBusy)    
                 mainWindowViewModel.DisplayArray(canvas);
         }
 
