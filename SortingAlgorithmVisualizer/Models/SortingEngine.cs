@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
-using System.Threading;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -56,6 +55,7 @@ namespace SortingAlgorithmVisualizer
 
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
         {
+            mainWindowViewModel.ClearLastRectanglesColor();
             MessageBox.Show("End...");
         }
 

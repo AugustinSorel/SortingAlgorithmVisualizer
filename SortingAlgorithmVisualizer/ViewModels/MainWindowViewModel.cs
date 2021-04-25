@@ -11,6 +11,7 @@ namespace SortingAlgorithmVisualizer
     class MainWindowViewModel
     {
         private Canvas canvas;
+        private Rectangle[] oldRectangles = new Rectangle[2];
         public SortingEngine SortingEngine { get; set; }
 
         public MainWindowViewModel(ComboBox comboBox)
@@ -67,8 +68,21 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
+        internal void ClearLastRectanglesColor()
+        {
+            foreach (var item in oldRectangles)
+            {
+                if (item == null)
+                    break;
+
+                item.Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush;
+            }
+        }
+
         internal void DrawRectangles(int tag, int tag2)
         {
+            ClearLastRectanglesColor();
+
             List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
 
             Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
@@ -77,8 +91,11 @@ namespace SortingAlgorithmVisualizer
             rectangles[0].Tag = (int)rectangles[0].Tag + 1;
             rectangles[1].Tag = (int)rectangles[1].Tag - 1;
 
-            //collection[0].Fill = Brushes.Red;
-            //collection[1].Fill = Brushes.Blue;
+            rectangles[0].Fill = Brushes.Red;
+            rectangles[1].Fill = Brushes.Blue;
+
+            oldRectangles[0] = rectangles[0];
+            oldRectangles[1] = rectangles[1];
         }
     }
 }

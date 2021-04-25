@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -32,7 +31,7 @@ namespace SortingAlgorithmVisualizer
                 if (randomInts[i] > randomInts[i + 1])
                 {
                     Swap(i, i + 1);
-                    Thread.Sleep(100);
+                    Thread.Sleep(10);
                 }
         }
 
