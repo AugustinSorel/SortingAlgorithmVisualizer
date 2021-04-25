@@ -69,5 +69,6 @@ namespace SortingAlgorithmVisualizer
 }
 /* ***TODO****
 2) TODO: Report progress
-3) TODO: Testing class
+2) TODO: pause
+2) TODO: abort
  */
