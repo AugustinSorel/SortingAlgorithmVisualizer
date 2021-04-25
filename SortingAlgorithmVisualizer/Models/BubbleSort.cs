@@ -32,7 +32,7 @@ namespace SortingAlgorithmVisualizer
                 if (randomInts[i] > randomInts[i + 1])
                 {
                     Swap(i, i + 1);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
         }
 

@@ -27,6 +27,13 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
+        public BackgroundWorker BackgroundWorker
+        {
+            get { return backgroundWorker; }
+            set { backgroundWorker = value; }
+        }
+
+
         public int[] RandomInts
         {
             get { return randomInts; }
@@ -36,10 +43,10 @@ namespace SortingAlgorithmVisualizer
         public SortingEngine()
         {
             arraySize = 10;
-            backgroundWorker = new BackgroundWorker();
-            backgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
-            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Finish);
-            backgroundWorker.ProgressChanged += new ProgressChangedEventHandler(Progress);
+            BackgroundWorker = new BackgroundWorker();
+            BackgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
+            BackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Finish);
+            BackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(Progress);
         }
 
         private void Progress(object sender, ProgressChangedEventArgs e)
@@ -59,18 +66,12 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                    ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
+                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
                     
-                    while (!se.IsSorted())//&& (!bgw.CancellationPending))
-                    {
-                        //Application.Current.Dispatcher.Invoke(new Action(() => {
-
-                            se.NextStep();
-                        //}));
-                        //Thread.Sleep(1000);
-                    }
-                
-                
+                while (!se.IsSorted())//&& (!bgw.CancellationPending))
+                {
+                    se.NextStep();
+                }
             }
             catch (Exception ex)
             {
@@ -83,8 +84,7 @@ namespace SortingAlgorithmVisualizer
             this.algoName = algoName;
             this.mainWindowViewModel = mainWindowViewModel;
 
-            if(!backgroundWorker.IsBusy)
-                backgroundWorker.RunWorkerAsync();
+            BackgroundWorker.RunWorkerAsync();
         }
 
         internal void SetUpArray(System.Windows.Controls.Canvas canvas)

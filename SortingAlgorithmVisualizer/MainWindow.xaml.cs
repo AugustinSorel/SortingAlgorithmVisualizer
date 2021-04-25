@@ -41,8 +41,11 @@ namespace SortingAlgorithmVisualizer
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindowViewModel.DisplayArray(canvas);
-            mainWindowViewModel.Start(algoNameComboBox.SelectedItem.ToString());
+            if (!mainWindowViewModel.SortingEngine.BackgroundWorker.IsBusy)
+            {
+                mainWindowViewModel.DisplayArray(canvas);
+                mainWindowViewModel.Start(algoNameComboBox.SelectedItem.ToString());
+            }
         }
 
         #region Key Down Event

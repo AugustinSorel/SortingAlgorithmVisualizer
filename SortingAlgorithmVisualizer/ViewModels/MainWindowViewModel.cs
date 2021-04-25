@@ -41,10 +41,9 @@ namespace SortingAlgorithmVisualizer
 
         internal void DisplayArray(Canvas canvas)
         {
-            
             this.canvas = canvas;
             SortingEngine.SetUpArray(canvas);
-            AddRectanglesToCanvas();
+            AddRectanglesToCanvas();   
         }
 
         private void AddRectanglesToCanvas()
