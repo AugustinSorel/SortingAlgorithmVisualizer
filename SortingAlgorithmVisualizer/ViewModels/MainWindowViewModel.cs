@@ -23,6 +23,7 @@ namespace SortingAlgorithmVisualizer
             PopulateComboBox(comboBox);
         }
 
+        #region Combo Box
         private void PopulateComboBox(ComboBox comboBox)
         {
             List<string> ClassList = AppDomain.CurrentDomain.GetAssemblies()
@@ -37,19 +38,37 @@ namespace SortingAlgorithmVisualizer
 
             comboBox.SelectedIndex = 0;
         }
+        #endregion
 
         internal void Start(string algoName)
         {
             SortingEngine.Start(algoName, this);
         }
 
+        #region Display Array
         internal void DisplayArray(Canvas canvas)
         {
             this.canvas = canvas;
             SortingEngine.SetUpArray(canvas);
+            SetUpProgressBar();
             AddRectanglesToCanvas();   
         }
+        #endregion
 
+        #region Progress Bar
+        private void SetUpProgressBar()
+        {
+            progressBar.Value = 0;
+            progressBar.Maximum = SortingEngine.ArraySize;
+        }
+
+        internal void ReportProgress()
+        {
+            progressBar.Value += 1;
+        }
+        #endregion
+
+        #region Rectangles
         private void AddRectanglesToCanvas()
         {
             canvas.Children.Clear();
@@ -71,22 +90,6 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
-        internal void ReportProgress()
-        {
-            progressBar.Value += 1;
-        }
-
-        internal void ClearLastRectanglesColor()
-        {
-            foreach (var item in oldRectangles)
-            {
-                if (item == null)
-                    break;
-
-                item.Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush;
-            }
-        }
-
         internal void DrawRectangles(int tag, int tag2)
         {
             ClearLastRectanglesColor();
@@ -105,5 +108,18 @@ namespace SortingAlgorithmVisualizer
             oldRectangles[0] = rectangles[0];
             oldRectangles[1] = rectangles[1];
         }
+        
+
+        internal void ClearLastRectanglesColor()
+        {
+            foreach (var item in oldRectangles)
+            {
+                if (item == null)
+                    break;
+
+                item.Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush;
+            }
+        }
+        #endregion
     }
 }
