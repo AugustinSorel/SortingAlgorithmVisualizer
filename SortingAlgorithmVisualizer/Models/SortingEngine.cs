@@ -96,7 +96,6 @@ namespace SortingAlgorithmVisualizer
         {
             Type type = Type.GetType(Assembly.GetEntryAssembly().GetName().Name + "." + algoName);
             ConstructorInfo[] ctors = type.GetConstructors();
-
             try
             {
                 ISortAlo algorithmSelected = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });

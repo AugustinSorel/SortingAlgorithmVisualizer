@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
 
@@ -67,8 +68,3 @@ namespace SortingAlgorithmVisualizer
         #endregion
     }
 }
-/* ***TODO****
-2) TODO: Report progress
-2) TODO: pause
-2) TODO: abort
- */
