@@ -35,7 +35,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
-            <ProgressBar Name="progressBar" Width="100" Margin="10"/>
+            <ProgressBar Name="progressBar" Width="100" Margin="10" Background="Black" Maximum="100"/>
 
             <TextBlock Foreground="{Binding Source={x:Static local:GlobalColors.ForegroundColor}}" 
                        VerticalAlignment="Center" Margin="10" FontSize="20">

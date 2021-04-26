@@ -12,11 +12,14 @@ namespace SortingAlgorithmVisualizer
     {
         private Canvas canvas;
         private Rectangle[] oldRectangles = new Rectangle[2];
+        private readonly ProgressBar progressBar;
+
         public SortingEngine SortingEngine { get; set; }
 
-        public MainWindowViewModel(ComboBox comboBox)
+        public MainWindowViewModel(ComboBox comboBox, ProgressBar progressBar)
         {
             SortingEngine = new SortingEngine();
+            this.progressBar = progressBar;
             PopulateComboBox(comboBox);
         }
 
@@ -66,6 +69,11 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
+        }
+
+        internal void ReportProgress()
+        {
+            progressBar.Value += 1;
         }
 
         internal void ClearLastRectanglesColor()

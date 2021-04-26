@@ -14,7 +14,7 @@ namespace SortingAlgorithmVisualizer
         public MainWindow()
         {
             InitializeComponent();
-            mainWindowViewModel = new MainWindowViewModel(algoNameComboBox);
+            mainWindowViewModel = new MainWindowViewModel(algoNameComboBox, progressBar);
             DataContext = mainWindowViewModel;
         }
 

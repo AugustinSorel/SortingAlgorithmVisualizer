@@ -46,11 +46,13 @@ namespace SortingAlgorithmVisualizer
             BackgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
             BackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Finish);
             BackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(Progress);
+            backgroundWorker.WorkerReportsProgress = true;
+            backgroundWorker.WorkerSupportsCancellation = true;
         }
 
         private void Progress(object sender, ProgressChangedEventArgs e)
         {
-            // report the progress here...
+            mainWindowViewModel.ReportProgress();
         }
 
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
@@ -71,6 +73,7 @@ namespace SortingAlgorithmVisualizer
                 while (!se.IsSorted())//&& (!bgw.CancellationPending))
                 {
                     se.NextStep();
+                    backgroundWorker.ReportProgress(1);
                 }
             }
             catch (Exception ex)
