@@ -50,6 +50,20 @@ namespace SortingAlgorithmVisualizer
             backgroundWorker.WorkerSupportsCancellation = true;
         }
 
+        private bool t = false;
+
+        internal void Abort()
+        {
+            if (algoName == null)
+                return;
+
+            if (backgroundWorker.IsBusy)
+            {
+                backgroundWorker.CancelAsync();
+                t = true;
+            }
+        }
+
         internal void Pause()
         {
             if (algoName == null)
@@ -69,6 +83,12 @@ namespace SortingAlgorithmVisualizer
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
         {
             mainWindowViewModel.ClearLastRectanglesColor();
+            if (t)
+            {
+                mainWindowViewModel.Restart(algoName);
+                t = false;
+            }
+
             MessageBox.Show("End...");
         }
 

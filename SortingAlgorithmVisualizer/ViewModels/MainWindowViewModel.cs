@@ -40,6 +40,11 @@ namespace SortingAlgorithmVisualizer
         }
         #endregion
 
+        internal void Abort()
+        {
+            SortingEngine.Abort();
+        }
+
         internal void Pause()
         {
             SortingEngine.Pause();
@@ -93,6 +98,12 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
+        }
+
+        internal void Restart(string algoName)
+        {
+            DisplayArray(canvas);
+            //Start(algoName);
         }
 
         internal void DrawRectangles(int tag, int tag2)

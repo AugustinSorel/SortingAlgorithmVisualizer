@@ -36,7 +36,7 @@ namespace SortingAlgorithmVisualizer
 
         private void AbortButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Abort");
+            mainWindowViewModel.Abort();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
