@@ -40,6 +40,11 @@ namespace SortingAlgorithmVisualizer
         }
         #endregion
 
+        internal void Pause()
+        {
+            SortingEngine.Pause();
+        }
+
         internal void Start(string algoName)
         {
             SortingEngine.Start(algoName, this);
@@ -62,9 +67,9 @@ namespace SortingAlgorithmVisualizer
             progressBar.Maximum = SortingEngine.ArraySize;
         }
 
-        internal void ReportProgress()
+        internal void ReportProgress(int value)
         {
-            progressBar.Value += 1;
+            progressBar.Value += value;
         }
         #endregion
 

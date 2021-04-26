@@ -29,5 +29,10 @@ namespace SortingAlgorithmVisualizer
         {
             throw new NotImplementedException();
         }
+
+        public int GetPercentageDone()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

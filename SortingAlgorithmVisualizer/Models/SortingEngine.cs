@@ -50,9 +50,20 @@ namespace SortingAlgorithmVisualizer
             backgroundWorker.WorkerSupportsCancellation = true;
         }
 
+        internal void Pause()
+        {
+            if (algoName == null)
+                return;
+
+            if (backgroundWorker.IsBusy)
+                backgroundWorker.CancelAsync();
+            else
+                backgroundWorker.RunWorkerAsync();
+        }
+
         private void Progress(object sender, ProgressChangedEventArgs e)
         {
-            mainWindowViewModel.ReportProgress();
+            mainWindowViewModel.ReportProgress(e.ProgressPercentage);
         }
 
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
@@ -68,12 +79,12 @@ namespace SortingAlgorithmVisualizer
 
             try
             {
-                ISortAlo se = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
+                ISortAlo algorithmSelected = (ISortAlo)ctors[0].Invoke(new object[] { mainWindowViewModel, randomInts });
                     
-                while (!se.IsSorted())//&& (!bgw.CancellationPending))
+                while (!algorithmSelected.IsSorted() && !backgroundWorker.CancellationPending)
                 {
-                    se.NextStep();
-                    backgroundWorker.ReportProgress(1);
+                    algorithmSelected.NextStep();
+                    backgroundWorker.ReportProgress(2);
                 }
             }
             catch (Exception ex)

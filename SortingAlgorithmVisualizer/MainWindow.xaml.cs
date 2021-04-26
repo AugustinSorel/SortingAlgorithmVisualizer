@@ -31,7 +31,7 @@ namespace SortingAlgorithmVisualizer
 
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Pause");
+            mainWindowViewModel.Pause();
         }
 
         private void AbortButton_Click(object sender, RoutedEventArgs e)
