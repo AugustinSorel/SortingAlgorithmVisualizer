@@ -14,19 +14,19 @@ namespace SortingAlgorithmVisualizer
         public MainWindow()
         {
             InitializeComponent();
-            mainWindowViewModel = new MainWindowViewModel(algoNameComboBox, progressBar);
+            mainWindowViewModel = new MainWindowViewModel(algoNameComboBox, progressBar, canvas);
             DataContext = mainWindowViewModel;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            mainWindowViewModel.DisplayArray(canvas);
+            mainWindowViewModel.SetUp();
         }
 
         private void ArraySizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (mainWindowViewModel != null && !mainWindowViewModel.SortingEngine.BackgroundWorker.IsBusy)    
-                mainWindowViewModel.DisplayArray(canvas);
+                mainWindowViewModel.SetUp();
         }
 
         private void PauseButton_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace SortingAlgorithmVisualizer
         {
             if (!mainWindowViewModel.SortingEngine.BackgroundWorker.IsBusy)
             {
-                mainWindowViewModel.DisplayArray(canvas);
+                mainWindowViewModel.SetUp();
                 mainWindowViewModel.Start(algoNameComboBox.SelectedItem.ToString());
             }
         }

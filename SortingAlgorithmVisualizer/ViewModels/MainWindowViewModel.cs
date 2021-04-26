@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -16,9 +15,10 @@ namespace SortingAlgorithmVisualizer
 
         public SortingEngine SortingEngine { get; set; }
 
-        public MainWindowViewModel(ComboBox comboBox, ProgressBar progressBar)
+        public MainWindowViewModel(ComboBox comboBox, ProgressBar progressBar, Canvas canvas)
         {
             SortingEngine = new SortingEngine();
+            this.canvas = canvas;
             this.progressBar = progressBar;
             PopulateComboBox(comboBox);
         }
@@ -56,12 +56,11 @@ namespace SortingAlgorithmVisualizer
         }
 
         #region Display Array
-        internal void DisplayArray(Canvas canvas)
+        internal void SetUp()
         {
-            this.canvas = canvas;
-            SortingEngine.SetUpArray(canvas);
+            SortingEngine.SetUpArray((int)canvas.ActualHeight);
             SetUpProgressBar();
-            AddRectanglesToCanvas();   
+            AddRectanglesToCanvas();
         }
         #endregion
 
@@ -98,12 +97,6 @@ namespace SortingAlgorithmVisualizer
                 Canvas.SetLeft(rectangle, i * rectangle.Width);
                 Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
-        }
-
-        internal void Restart(string algoName)
-        {
-            DisplayArray(canvas);
-            //Start(algoName);
         }
 
         internal void DrawRectangles(int tag, int tag2)

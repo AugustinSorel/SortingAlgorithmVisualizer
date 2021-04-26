@@ -12,6 +12,7 @@ namespace SortingAlgorithmVisualizer
         BackgroundWorker backgroundWorker;
         private string algoName;
         private MainWindowViewModel mainWindowViewModel;
+        private bool aborted;
 
         public int ArraySize
         {
@@ -50,8 +51,6 @@ namespace SortingAlgorithmVisualizer
             backgroundWorker.WorkerSupportsCancellation = true;
         }
 
-        private bool t = false;
-
         internal void Abort()
         {
             if (algoName == null)
@@ -60,7 +59,7 @@ namespace SortingAlgorithmVisualizer
             if (backgroundWorker.IsBusy)
             {
                 backgroundWorker.CancelAsync();
-                t = true;
+                aborted = true;
             }
         }
 
@@ -83,10 +82,11 @@ namespace SortingAlgorithmVisualizer
         private void Finish(object sender, RunWorkerCompletedEventArgs e)
         {
             mainWindowViewModel.ClearLastRectanglesColor();
-            if (t)
+
+            if (aborted)
             {
-                mainWindowViewModel.Restart(algoName);
-                t = false;
+                mainWindowViewModel.SetUp();
+                aborted = false;
             }
 
             MessageBox.Show("End...");
@@ -121,12 +121,12 @@ namespace SortingAlgorithmVisualizer
             BackgroundWorker.RunWorkerAsync();
         }
 
-        internal void SetUpArray(System.Windows.Controls.Canvas canvas)
+        internal void SetUpArray(int canvasHeight)
         {
             randomInts = new int[arraySize];
             Random random = new Random();
             for (int i = 0; i < randomInts.Length; i++)
-                randomInts[i] = random.Next(0, (int)canvas.ActualHeight);
+                randomInts[i] = random.Next(0, canvasHeight);
         }
 
         #region Property Changed Event Handler
