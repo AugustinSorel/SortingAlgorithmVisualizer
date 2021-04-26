@@ -88,8 +88,6 @@ namespace SortingAlgorithmVisualizer
                 mainWindowViewModel.SetUp();
                 aborted = false;
             }
-
-            MessageBox.Show("End...");
         }
 
         private void DoWork(object sender, DoWorkEventArgs e)

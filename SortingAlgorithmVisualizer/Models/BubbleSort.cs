@@ -47,7 +47,7 @@ namespace SortingAlgorithmVisualizer
         private void DrawBar(int tag, int tag2)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                mainWindowViewModel.DrawRectangles(tag, tag2);
+                mainWindowViewModel.SwapRectangles(tag, tag2);
             }));
         }
     }

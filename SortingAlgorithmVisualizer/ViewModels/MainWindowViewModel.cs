@@ -99,7 +99,7 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
-        internal void DrawRectangles(int tag, int tag2)
+        internal void SwapRectangles(int tag, int tag2)
         {
             ClearLastRectanglesColor();
 
