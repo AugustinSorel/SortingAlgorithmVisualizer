@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -34,23 +35,32 @@ namespace SortingAlgorithmVisualizer
 
         public void NextStep()
         {
-            int n = randomInts.Length;
-            for (int i = 1; i < n; ++i)
+            for (int i = 0; i < randomInts.Count(); i++)
             {
-                int key = randomInts[i];
-                int j = i - 1;
+                var item = randomInts[i];
+                var currentIndex = i;
 
-                // Move elements of arr[0..i-1],
-                // that are greater than key,
-                // to one position ahead of
-                // their current position
-                while (j >= 0 && randomInts[j] > key)
+                while (currentIndex > 0 && randomInts[currentIndex - 1] > item)
                 {
-                    randomInts[j + 1] = randomInts[j];
-                    j--;
+                    DrawBar(currentIndex - 1, currentIndex);
+                    Thread.Sleep(100);
+                    randomInts[currentIndex] = randomInts[currentIndex - 1];
+                    currentIndex--;
                 }
-                randomInts[j + 1] = key;
+                randomInts[currentIndex] = item;
             }
+        }
+
+        private void Swap(int i, int v)
+        {
+            DrawBar(i, v);
+        }
+
+        private void DrawBar(int tag, int tag2)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                mainWindowViewModel.Test(tag, tag2);
+            }));
         }
     }
 }
