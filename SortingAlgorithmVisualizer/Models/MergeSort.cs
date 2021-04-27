@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -54,12 +55,12 @@ namespace SortingAlgorithmVisualizer
             //Recursively sort the right array
             right = MergeSort1(right);
             //Merge our two sorted arrays
-            result = merge(left, right);
+            result = Merge(left, right);
             return result;
         }
 
         //This method will be responsible for combining our two sorted arrays into one giant array
-        public int[] merge(int[] left, int[] right)
+        public int[] Merge(int[] left, int[] right)
         {
             int resultLength = right.Length + left.Length;
             int[] result = new int[resultLength];
@@ -77,6 +78,7 @@ namespace SortingAlgorithmVisualizer
                         result[indexResult] = left[indexLeft];
                         indexLeft++;
                         indexResult++;
+
                     }
                     // else the item in the right array wll be added to the results array
                     else
@@ -107,6 +109,25 @@ namespace SortingAlgorithmVisualizer
         public void NextStep()
         {
             randomInts =  MergeSort1(randomInts);
+            //Swap(i, i + 1);
+            //Thread.Sleep(10);
+        }
+
+        private void Swap(int i, int v)
+        {
+            //int temp = randomInts[i + 1];
+            //randomInts[i + 1] = randomInts[i];
+            //randomInts[i] = temp;
+
+            //DrawBar(i, v);
+        }
+
+        private void DrawBar(int[] result)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                //mainWindowViewModel.Test(result);
+            }));
+            Thread.Sleep(10);
         }
 
         public bool IsSorted()
@@ -116,7 +137,9 @@ namespace SortingAlgorithmVisualizer
                     return false;
 
             foreach (var item in randomInts)
+            {
                 MessageBox.Show(item.ToString());
+            }
 
             return true;
         }
