@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace SortingAlgorithmVisualizer
 {
@@ -43,6 +44,8 @@ namespace SortingAlgorithmVisualizer
                 while (currentIndex > 0 && randomInts[currentIndex - 1] > item)
                 {
                     DrawBar(currentIndex - 1, currentIndex);
+                    //MessageBox.Show(currentIndex.ToString());
+                    //MessageBox.Show(i.ToString());
                     Thread.Sleep(100);
                     randomInts[currentIndex] = randomInts[currentIndex - 1];
                     currentIndex--;
@@ -51,15 +54,10 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
-        private void Swap(int i, int v)
-        {
-            DrawBar(i, v);
-        }
-
         private void DrawBar(int tag, int tag2)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                mainWindowViewModel.Test(tag, tag2);
+                mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
             }));
         }
     }

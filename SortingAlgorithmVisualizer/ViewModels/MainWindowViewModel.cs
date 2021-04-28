@@ -140,25 +140,15 @@ namespace SortingAlgorithmVisualizer
             SetRecangleLeft(rectangle2, rectangle2.Width * tag2 - rectangle2.Width);
         }
 
-        internal void Test(int tag, int tag2)
+        internal void UpdateRectangles(int tag, int tag2, int bound, int bound2)
         {
             ClearLastRectanglesColor();
-
-            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
-
-            Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
-            Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);
-
-            rectangles[0].Tag = (int)rectangles[0].Tag + 1;
-            rectangles[1].Tag = (int)rectangles[1].Tag - 1;
-
-            rectangles[0].Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
-            rectangles[1].Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
-
-            oldRectangles[0] = rectangles[0];
-            oldRectangles[1] = rectangles[1];
+            List<Rectangle> rectangles = GetRectangles(tag, tag2);
+            SwapRectanglesTag(bound, bound2, rectangles[0], rectangles[1]);
+            SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
+            FillRectangles(rectangles[0], rectangles[1]);
+            SetOldRectanglesArray(rectangles[0], rectangles[1]);
         }
-
 
         internal void ClearLastRectanglesColor()
         {
