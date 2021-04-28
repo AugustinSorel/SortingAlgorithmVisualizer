@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace SortingAlgorithmVisualizer
 {
@@ -47,7 +49,12 @@ namespace SortingAlgorithmVisualizer
         private void DrawBar(int tag, int tag2)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                mainWindowViewModel.SwapRectangles(tag, tag2);
+                mainWindowViewModel.ClearLastRectanglesColor();
+                List<Rectangle> rectangles = mainWindowViewModel.GetRectangles(tag, tag2);
+                mainWindowViewModel.SwapRectanglesTag(1, -1, rectangles[0], rectangles[1]);
+                mainWindowViewModel.SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
+                mainWindowViewModel.FillRectangles(rectangles[0], rectangles[1]);
+                mainWindowViewModel.SetOldRectanglesArray(rectangles[0], rectangles[1]);
             }));
         }
     }

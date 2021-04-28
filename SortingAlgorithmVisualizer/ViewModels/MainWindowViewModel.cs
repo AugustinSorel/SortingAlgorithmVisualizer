@@ -95,28 +95,49 @@ namespace SortingAlgorithmVisualizer
                 };
 
                 canvas.Children.Add(rectangle);
-                Canvas.SetLeft(rectangle, i * rectangle.Width);
-                Canvas.SetTop(rectangle, canvas.ActualHeight - rectangle.Height);
+                SetRecangleLeft(rectangle, i * rectangle.Width);
+                SetRectangleTop(rectangle, canvas.ActualHeight - rectangle.Height);
             }
         }
 
-        internal void SwapRectangles(int tag, int tag2)
+        internal void SetRectangleTop(Rectangle rectangle, double yPoint)
         {
-            ClearLastRectanglesColor();
+            Canvas.SetTop(rectangle, yPoint);
+        }
 
+        internal void SetRecangleLeft(Rectangle rectangle, double xPoint)
+        {
+            Canvas.SetLeft(rectangle, xPoint);
+        }
+
+        internal List<Rectangle> GetRectangles(int tag, int tag2)
+        {
             List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+            return rectangles;
+        }
 
-            Canvas.SetLeft(rectangles[0], rectangles[0].Width * tag + rectangles[0].Width);
-            Canvas.SetLeft(rectangles[1], rectangles[1].Width * tag2 - rectangles[1].Width);
+        internal void SwapRectanglesTag(int tag1, int tag2, Rectangle rectangle1, Rectangle rectangle2)
+        {
+            rectangle1.Tag = (int)rectangle1.Tag + tag1;
+            rectangle2.Tag = (int)rectangle2.Tag + tag2;
+        }
 
-            rectangles[0].Tag = (int)rectangles[0].Tag + 1;
-            rectangles[1].Tag = (int)rectangles[1].Tag - 1;
+        internal void FillRectangles(Rectangle rectangle1, Rectangle rectangle2)
+        {
+            rectangle1.Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
+            rectangle2.Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
+        }
 
-            rectangles[0].Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
-            rectangles[1].Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
+        internal void SetOldRectanglesArray(Rectangle rectangle1, Rectangle rectangle2)
+        {
+            oldRectangles[0] = rectangle1;
+            oldRectangles[1] = rectangle2;
+        }
 
-            oldRectangles[0] = rectangles[0];
-            oldRectangles[1] = rectangles[1];
+        internal void SwapRectanglesPosition(int tag, int tag2, Rectangle rectangle1, Rectangle rectangle2)
+        {
+            SetRecangleLeft(rectangle1, rectangle1.Width * tag + rectangle1.Width);
+            SetRecangleLeft(rectangle2, rectangle2.Width * tag2 - rectangle2.Width);
         }
 
         internal void Test(int tag, int tag2)
