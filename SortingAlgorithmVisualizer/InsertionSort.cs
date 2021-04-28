@@ -26,15 +26,18 @@ namespace SortingAlgorithmVisualizer
         }
 
         int currentIndex = 0;
+        int firstRectangleTag;
         public void NextStep()
         {
             int temp = randomInts[currentIndex];
-
+            firstRectangleTag = currentIndex;
+            
             while (currentIndex > 0 && randomInts[currentIndex - 1] > temp)
             {
                 Swap();
                 Thread.Sleep(10);
             }
+            
             randomInts[currentIndex] = temp;
             currentIndex++;
         }
@@ -50,7 +53,9 @@ namespace SortingAlgorithmVisualizer
         {
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-                mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
+                mainWindowViewModel.Test(tag, tag2);
+                //mainWindowViewModel.Test2(firstRectangleTag);
+                //mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
             }));
         }
     }

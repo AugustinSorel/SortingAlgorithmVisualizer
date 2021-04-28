@@ -112,8 +112,7 @@ namespace SortingAlgorithmVisualizer
 
         private List<Rectangle> GetRectangles(int tag, int tag2)
         {
-            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
-            return rectangles;
+            return canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
         }
 
         private void SwapRectanglesTag(int tag1, int tag2, Rectangle rectangle1, Rectangle rectangle2)
@@ -148,6 +147,24 @@ namespace SortingAlgorithmVisualizer
             SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
             FillRectangles(rectangles[0], rectangles[1]);
             SetOldRectanglesArray(rectangles[0], rectangles[1]);
+        }
+
+        internal void Test(int tag, int tag2)
+        {
+            ClearLastRectanglesColor();
+            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+            SwapRectanglesTag(1, -1, rectangles[0], rectangles[1]);
+            SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
+            FillRectangles(rectangles[0], rectangles[1]);
+            SetOldRectanglesArray(rectangles[0], rectangles[1]);
+        }
+
+        internal void Test2(int currentIndex)
+        {
+            List<Rectangle> rectangle = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == currentIndex).ToList();
+
+            rectangle[0].Fill = Brushes.Blue;
+            MessageBox.Show("dd");
         }
 
         internal void ClearLastRectanglesColor()
