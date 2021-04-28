@@ -100,41 +100,41 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
-        internal void SetRectangleTop(Rectangle rectangle, double yPoint)
+        private void SetRectangleTop(Rectangle rectangle, double yPoint)
         {
             Canvas.SetTop(rectangle, yPoint);
         }
 
-        internal void SetRecangleLeft(Rectangle rectangle, double xPoint)
+        private void SetRecangleLeft(Rectangle rectangle, double xPoint)
         {
             Canvas.SetLeft(rectangle, xPoint);
         }
 
-        internal List<Rectangle> GetRectangles(int tag, int tag2)
+        private List<Rectangle> GetRectangles(int tag, int tag2)
         {
             List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
             return rectangles;
         }
 
-        internal void SwapRectanglesTag(int tag1, int tag2, Rectangle rectangle1, Rectangle rectangle2)
+        private void SwapRectanglesTag(int tag1, int tag2, Rectangle rectangle1, Rectangle rectangle2)
         {
             rectangle1.Tag = (int)rectangle1.Tag + tag1;
             rectangle2.Tag = (int)rectangle2.Tag + tag2;
         }
 
-        internal void FillRectangles(Rectangle rectangle1, Rectangle rectangle2)
+        private void FillRectangles(Rectangle rectangle1, Rectangle rectangle2)
         {
             rectangle1.Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
             rectangle2.Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
         }
 
-        internal void SetOldRectanglesArray(Rectangle rectangle1, Rectangle rectangle2)
+        private void SetOldRectanglesArray(Rectangle rectangle1, Rectangle rectangle2)
         {
             oldRectangles[0] = rectangle1;
             oldRectangles[1] = rectangle2;
         }
 
-        internal void SwapRectanglesPosition(int tag, int tag2, Rectangle rectangle1, Rectangle rectangle2)
+        private void SwapRectanglesPosition(int tag, int tag2, Rectangle rectangle1, Rectangle rectangle2)
         {
             SetRecangleLeft(rectangle1, rectangle1.Width * tag + rectangle1.Width);
             SetRecangleLeft(rectangle2, rectangle2.Width * tag2 - rectangle2.Width);

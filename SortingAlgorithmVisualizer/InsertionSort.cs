@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Shapes;
 
 namespace SortingAlgorithmVisualizer
 {
@@ -26,37 +22,34 @@ namespace SortingAlgorithmVisualizer
                 if (randomInts[i] > randomInts[i + 1])
                     return false;
 
-            foreach (var item in randomInts)
-            {
-                MessageBox.Show(item.ToString());
-            }
-
             return true;
         }
 
+        int currentIndex = 0;
         public void NextStep()
         {
-            for (int i = 0; i < randomInts.Count(); i++)
-            {
-                var item = randomInts[i];
-                var currentIndex = i;
+            int temp = randomInts[currentIndex];
 
-                while (currentIndex > 0 && randomInts[currentIndex - 1] > item)
-                {
-                    DrawBar(currentIndex - 1, currentIndex);
-                    //MessageBox.Show(currentIndex.ToString());
-                    //MessageBox.Show(i.ToString());
-                    Thread.Sleep(100);
-                    randomInts[currentIndex] = randomInts[currentIndex - 1];
-                    currentIndex--;
-                }
-                randomInts[currentIndex] = item;
+            while (currentIndex > 0 && randomInts[currentIndex - 1] > temp)
+            {
+                Swap();
+                Thread.Sleep(10);
             }
+            randomInts[currentIndex] = temp;
+            currentIndex++;
+        }
+
+        private void Swap()
+        {
+            DrawBar(currentIndex - 1, currentIndex);
+            randomInts[currentIndex] = randomInts[currentIndex - 1];
+            currentIndex--;
         }
 
         private void DrawBar(int tag, int tag2)
         {
-            Application.Current.Dispatcher.Invoke(new Action(() => {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
                 mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
             }));
         }
