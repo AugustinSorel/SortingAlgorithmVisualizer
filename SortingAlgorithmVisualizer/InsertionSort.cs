@@ -53,7 +53,7 @@ namespace SortingAlgorithmVisualizer
         {
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-                mainWindowViewModel.Test(tag, tag2);
+                mainWindowViewModel.Test(tag, tag2, firstRectangleTag);
                 //mainWindowViewModel.Test2(firstRectangleTag);
                 //mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
             }));

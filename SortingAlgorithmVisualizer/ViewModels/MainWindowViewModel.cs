@@ -11,7 +11,7 @@ namespace SortingAlgorithmVisualizer
     class MainWindowViewModel
     {
         private Canvas canvas;
-        private Rectangle[] oldRectangles = new Rectangle[2];
+        private List<Rectangle> oldRectanglesList;
         private readonly ProgressBar progressBar;
 
         public SortingEngine SortingEngine { get; set; }
@@ -19,6 +19,7 @@ namespace SortingAlgorithmVisualizer
         public MainWindowViewModel(ComboBox comboBox, ProgressBar progressBar, Canvas canvas)
         {
             SortingEngine = new SortingEngine();
+            oldRectanglesList = new List<Rectangle>();
             this.canvas = canvas;
             this.progressBar = progressBar;
             PopulateComboBox(comboBox);
@@ -121,16 +122,16 @@ namespace SortingAlgorithmVisualizer
             rectangle2.Tag = (int)rectangle2.Tag + tag2;
         }
 
-        private void FillRectangles(Rectangle rectangle1, Rectangle rectangle2)
+        private void FillRectangle(Rectangle rectangle, string colorString)
         {
-            rectangle1.Fill = new BrushConverter().ConvertFromString(GlobalColors.BigRectangleColor) as SolidColorBrush;
-            rectangle2.Fill = new BrushConverter().ConvertFromString(GlobalColors.SmallRectangleColor) as SolidColorBrush;
+            rectangle.Fill = new BrushConverter().ConvertFromString(colorString) as SolidColorBrush;
         }
 
-        private void SetOldRectanglesArray(Rectangle rectangle1, Rectangle rectangle2)
+        private void SetOldRectanglesArray(List<Rectangle> newRectangle)
         {
-            oldRectangles[0] = rectangle1;
-            oldRectangles[1] = rectangle2;
+            oldRectanglesList.Clear();
+            foreach (var item in newRectangle)
+                oldRectanglesList.Add(item);
         }
 
         private void SwapRectanglesPosition(int tag, int tag2, Rectangle rectangle1, Rectangle rectangle2)
@@ -145,18 +146,23 @@ namespace SortingAlgorithmVisualizer
             List<Rectangle> rectangles = GetRectangles(tag, tag2);
             SwapRectanglesTag(bound, bound2, rectangles[0], rectangles[1]);
             SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
-            FillRectangles(rectangles[0], rectangles[1]);
-            SetOldRectanglesArray(rectangles[0], rectangles[1]);
+            FillRectangle(rectangles[0], GlobalColors.BigRectangleColor);
+            FillRectangle(rectangles[1], GlobalColors.SmallRectangleColor);
+            SetOldRectanglesArray(rectangles);
         }
 
-        internal void Test(int tag, int tag2)
+        internal void Test(int tag, int tag2, int firstRectangleTag)
         {
             ClearLastRectanglesColor();
             List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
+            
+            Rectangle Bigrectangle = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == firstRectangleTag).FirstOrDefault();
+            
             SwapRectanglesTag(1, -1, rectangles[0], rectangles[1]);
             SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
-            FillRectangles(rectangles[0], rectangles[1]);
-            SetOldRectanglesArray(rectangles[0], rectangles[1]);
+            FillRectangle(Bigrectangle, GlobalColors.BigRectangleColor);
+            FillRectangle(rectangles[1], GlobalColors.SmallRectangleColor);
+            SetOldRectanglesArray(rectangles);
         }
 
         internal void Test2(int currentIndex)
@@ -169,7 +175,7 @@ namespace SortingAlgorithmVisualizer
 
         internal void ClearLastRectanglesColor()
         {
-            foreach (var item in oldRectangles)
+            foreach (var item in oldRectanglesList)
             {
                 if (item == null)
                     break;
