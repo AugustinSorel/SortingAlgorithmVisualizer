@@ -66,5 +66,15 @@ namespace SortingAlgorithmVisualizer
                 arraySizeSlider.Value += 1;
         }
         #endregion
+
+        private void ScreenSizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.WindowState = WindowState.Normal;
+            else
+                this.WindowState = WindowState.Maximized;
+
+            mainWindowViewModel.SetUp();
+        }
     }
 }
