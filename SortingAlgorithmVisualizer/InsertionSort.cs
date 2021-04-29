@@ -9,6 +9,8 @@ namespace SortingAlgorithmVisualizer
     {
         private readonly MainWindowViewModel mainWindowViewModel;
         private readonly int[] randomInts;
+        private int currentIndex = 0;
+        private int firstRectangleTag;
 
         public InsertionSort(MainWindowViewModel mainWindowViewModel, int[] randomInts)
         {
@@ -25,8 +27,6 @@ namespace SortingAlgorithmVisualizer
             return true;
         }
 
-        int currentIndex = 0;
-        int firstRectangleTag;
         public void NextStep()
         {
             int temp = randomInts[currentIndex];
@@ -53,9 +53,7 @@ namespace SortingAlgorithmVisualizer
         {
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-                mainWindowViewModel.Test(tag, tag2, firstRectangleTag);
-                //mainWindowViewModel.Test2(firstRectangleTag);
-                //mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
+                mainWindowViewModel.HandleInsertionSortDrawing(tag, tag2, firstRectangleTag);
             }));
         }
     }

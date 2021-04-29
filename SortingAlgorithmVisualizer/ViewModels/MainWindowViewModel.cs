@@ -140,7 +140,7 @@ namespace SortingAlgorithmVisualizer
             SetRecangleLeft(rectangle2, rectangle2.Width * tag2 - rectangle2.Width);
         }
 
-        internal void UpdateRectangles(int tag, int tag2, int bound, int bound2)
+        internal void HandleBubbleSortDrawing(int tag, int tag2, int bound, int bound2)
         {
             ClearLastRectanglesColor();
             List<Rectangle> rectangles = GetRectangles(tag, tag2);
@@ -151,7 +151,7 @@ namespace SortingAlgorithmVisualizer
             SetOldRectanglesArray(rectangles);
         }
 
-        internal void Test(int tag, int tag2, int firstRectangleTag)
+        internal void HandleInsertionSortDrawing(int tag, int tag2, int firstRectangleTag)
         {
             ClearLastRectanglesColor();
             List<Rectangle> rectangles = GetRectangles(tag, tag2);

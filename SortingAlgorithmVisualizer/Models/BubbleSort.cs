@@ -49,7 +49,7 @@ namespace SortingAlgorithmVisualizer
         private void DrawBar(int tag, int tag2)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                mainWindowViewModel.UpdateRectangles(tag, tag2, 1, -1);
+                mainWindowViewModel.HandleBubbleSortDrawing(tag, tag2, 1, -1);
             }));
         }
     }
