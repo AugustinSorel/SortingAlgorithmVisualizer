@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Media;
 using System.Windows;
 using System.Windows.Input;
 
@@ -49,6 +48,16 @@ namespace SortingAlgorithmVisualizer
             }
         }
 
+        private void ScreenSizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.WindowState = WindowState.Normal;
+            else
+                this.WindowState = WindowState.Maximized;
+
+            mainWindowViewModel.SetUp();
+        }
+
         #region Key Down Event
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -64,17 +73,9 @@ namespace SortingAlgorithmVisualizer
                 arraySizeSlider.Value -= 1;
             else if (e.Key == Key.Right)
                 arraySizeSlider.Value += 1;
+            else if (e.Key == Key.F)
+                ScreenSizeButton_Click(null, null);
         }
         #endregion
-
-        private void ScreenSizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Maximized)
-                this.WindowState = WindowState.Normal;
-            else
-                this.WindowState = WindowState.Maximized;
-
-            mainWindowViewModel.SetUp();
-        }
     }
 }
