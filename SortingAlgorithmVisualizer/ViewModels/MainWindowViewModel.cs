@@ -10,8 +10,8 @@ namespace SortingAlgorithmVisualizer
 {
     class MainWindowViewModel
     {
-        private Canvas canvas;
-        private List<Rectangle> oldRectanglesList;
+        private readonly Canvas canvas;
+        private readonly List<Rectangle> oldRectanglesList;
         private readonly ProgressBar progressBar;
 
         public SortingEngine SortingEngine { get; set; }

@@ -75,7 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InsertionSort.cs" />
+    <Compile Include="Models\InsertionSort.cs" />
     <Compile Include="Models\BubbleSort.cs" />
     <Compile Include="Global\GlobalColors.cs" />
     <Compile Include="Models\ISortAlo.cs" />
@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\SortingEngine.cs" />
+    <Compile Include="QuickSort.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\MergeSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
