@@ -12,6 +12,7 @@
         KeyDown="Window_KeyDown"
         ContentRendered="Window_ContentRendered"
         Name="mainWindow"
+        WindowState="Maximized"
         Title="MainWindow" Height="700" Width="700">
 
     <Window.Resources>
@@ -72,6 +73,14 @@
                 </Path>
             </Button>
 
+            <Button Name="d" Click="AbortButton_Click" ToolTip=" (a)">
+                <Path Stroke="#2980b9" Fill="#3498db">
+                    <Path.Data>
+                        <PathGeometry Figures="M 0 0 L 3 0 L 3 1 L 1 1 L 1 3 L 0 3 Z M 0 5 L 1 5 L 1 7 L 3 7 L 3 8 L 0 8 Z M 5 0 L 8 0 L 8 3 L 7 3 L 7 1 L 5 1 Z M 8 8 L 5 8 L 5 7 L 7 7 L 7 5 L 8 5 Z"/>
+                    </Path.Data>
+                </Path>
+            </Button>
+            
             <ComboBox Name="algoNameComboBox" Margin="10" Width="150"/>
 
         </StackPanel>

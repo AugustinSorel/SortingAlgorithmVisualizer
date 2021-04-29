@@ -154,15 +154,19 @@ namespace SortingAlgorithmVisualizer
         internal void Test(int tag, int tag2, int firstRectangleTag)
         {
             ClearLastRectanglesColor();
-            List<Rectangle> rectangles = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag || (int)x.Tag == tag2).ToList();
-            
-            Rectangle Bigrectangle = canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == firstRectangleTag).FirstOrDefault();
+            List<Rectangle> rectangles = GetRectangles(tag, tag2);
+            rectangles.Add(GetOneRectangle(firstRectangleTag));
             
             SwapRectanglesTag(1, -1, rectangles[0], rectangles[1]);
             SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
-            FillRectangle(Bigrectangle, GlobalColors.BigRectangleColor);
+            FillRectangle(rectangles[2], GlobalColors.BigRectangleColor);
             FillRectangle(rectangles[1], GlobalColors.SmallRectangleColor);
             SetOldRectanglesArray(rectangles);
+        }
+
+        private Rectangle GetOneRectangle(int tag)
+        {
+            return canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag).FirstOrDefault();
         }
 
         internal void Test2(int currentIndex)
