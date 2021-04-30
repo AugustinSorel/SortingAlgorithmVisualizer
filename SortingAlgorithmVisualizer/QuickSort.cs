@@ -19,21 +19,22 @@ namespace SortingAlgorithmVisualizer
 
         private void QuickSort1(int[] arr, int start, int end)
         {
-            Draw();
-            Thread.Sleep(10);
-
             if (start >= end)
                 return;
 
-            var index = Partition(arr, start, end);
+            int index = Partition(arr, start, end);
+
+            Draw(start, index, end);
+            Thread.Sleep(100);
+            
             QuickSort1(arr, start, index - 1);
             QuickSort1(arr, index + 1, end);
         }
 
-        private void Draw()
+        private void Draw(int start, int index, int end)
         {
             Application.Current.Dispatcher.Invoke(new System.Action(() => {
-                mainWindowViewModel.HandleQuickSortAnimation(randomInts);
+                mainWindowViewModel.HandleQuickSortAnimation(randomInts, start, index, end);
                 
             }));
         }

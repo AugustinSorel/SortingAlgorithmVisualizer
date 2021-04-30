@@ -164,28 +164,39 @@ namespace SortingAlgorithmVisualizer
             SetOldRectanglesArray(rectangles);
         }
 
-        internal void HandleQuickSortAnimation(int[] randomInts)
+        internal void HandleQuickSortAnimation(int[] randomInts, int start, int index, int end)
         {
-            canvas.Children.Clear();
+            ClearLastRectanglesColor();
 
-
-            canvas.Children.Clear();
-            for (int i = 0; i < randomInts.Length; i++)
+            int i = -1;
+            foreach (var item in canvas.Children.Cast<Rectangle>())
             {
-                Rectangle rectangle = new Rectangle()
-                {
-                    Height = randomInts[i],
-                    Width = canvas.ActualWidth / randomInts.Length,
-                    Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
-                    StrokeThickness = 1,
-                    Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
-                    Tag = i,
-                };
+                i++;
+                item.Height = randomInts[i];
+                item.Width = canvas.ActualWidth / randomInts.Length;
+                item.Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush;
+                item.StrokeThickness = 1;
+                item.Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush;
+                item.Tag = i;
 
-                canvas.Children.Add(rectangle);
-                SetRecangleLeft(rectangle, i * rectangle.Width);
-                SetRectangleTop(rectangle, canvas.ActualHeight - rectangle.Height);
+                //canvas.Children.Add(rectangle);
+                SetRecangleLeft(item, i * item.Width);
+                SetRectangleTop(item, canvas.ActualHeight - item.Height);
             }
+
+            List<Rectangle> rectangles = new List<Rectangle>
+            {
+                GetOneRectangle(start),
+                GetOneRectangle(index),
+                GetOneRectangle(end)
+            };
+
+            FillRectangle(rectangles[0], GlobalColors.BigRectangleColor);
+            FillRectangle(rectangles[1], GlobalColors.SmallRectangleColor);
+            FillRectangle(rectangles[2], GlobalColors.BigRectangleColor);
+
+            SetOldRectanglesArray(rectangles);
+
         }
 
         private Rectangle GetOneRectangle(int tag)
