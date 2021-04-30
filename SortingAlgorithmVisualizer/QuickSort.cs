@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -29,7 +25,29 @@ namespace SortingAlgorithmVisualizer
             QuickSort1(arr, index + 1, end);
         }
 
+        private int Partition(int[] arr, int start, int end)
+        {
+            int pivotIndex = start;
+            int pivotValue = arr[end];
+            for (int i = start; i < end; i++)
+            {
+                if (arr[i] < pivotValue)
+                {
+                    Swap(arr, i, pivotIndex);
+                    pivotIndex++;
+                }
+            }
+            Swap(arr, pivotIndex, end);
 
+            return pivotIndex;
+        }
+
+        private void Swap(int[] arr, int i, int pivotIndex)
+        {
+            int temp = arr[i];
+            arr[i] = arr[pivotIndex];
+            arr[pivotIndex] = temp;
+        }
 
         public void NextStep()
         {
@@ -38,6 +56,13 @@ namespace SortingAlgorithmVisualizer
 
         public bool IsSorted()
         {
+            for (int i = 0; i < randomInts.Count() - 1; i++)
+                if (randomInts[i] > randomInts[i + 1])
+                    return false;
+
+            foreach (var item in randomInts)
+                MessageBox.Show(item.ToString());
+
             return true;
         }
     }
