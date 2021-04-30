@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SortingAlgorithmVisualizer
@@ -17,12 +19,23 @@ namespace SortingAlgorithmVisualizer
 
         private void QuickSort1(int[] arr, int start, int end)
         {
+            Draw();
+            Thread.Sleep(10);
+
             if (start >= end)
                 return;
 
             var index = Partition(arr, start, end);
             QuickSort1(arr, start, index - 1);
             QuickSort1(arr, index + 1, end);
+        }
+
+        private void Draw()
+        {
+            Application.Current.Dispatcher.Invoke(new System.Action(() => {
+                mainWindowViewModel.HandleQuickSortAnimation(randomInts);
+                
+            }));
         }
 
         private int Partition(int[] arr, int start, int end)
@@ -59,9 +72,6 @@ namespace SortingAlgorithmVisualizer
             for (int i = 0; i < randomInts.Count() - 1; i++)
                 if (randomInts[i] > randomInts[i + 1])
                     return false;
-
-            foreach (var item in randomInts)
-                MessageBox.Show(item.ToString());
 
             return true;
         }

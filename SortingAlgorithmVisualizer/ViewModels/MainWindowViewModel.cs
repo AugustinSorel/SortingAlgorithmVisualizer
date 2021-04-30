@@ -164,6 +164,30 @@ namespace SortingAlgorithmVisualizer
             SetOldRectanglesArray(rectangles);
         }
 
+        internal void HandleQuickSortAnimation(int[] randomInts)
+        {
+            canvas.Children.Clear();
+
+
+            canvas.Children.Clear();
+            for (int i = 0; i < randomInts.Length; i++)
+            {
+                Rectangle rectangle = new Rectangle()
+                {
+                    Height = randomInts[i],
+                    Width = canvas.ActualWidth / randomInts.Length,
+                    Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush,
+                    StrokeThickness = 1,
+                    Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush,
+                    Tag = i,
+                };
+
+                canvas.Children.Add(rectangle);
+                SetRecangleLeft(rectangle, i * rectangle.Width);
+                SetRectangleTop(rectangle, canvas.ActualHeight - rectangle.Height);
+            }
+        }
+
         private Rectangle GetOneRectangle(int tag)
         {
             return canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag).FirstOrDefault();
