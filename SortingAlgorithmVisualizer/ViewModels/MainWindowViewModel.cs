@@ -156,7 +156,7 @@ namespace SortingAlgorithmVisualizer
             ClearLastRectanglesColor();
             List<Rectangle> rectangles = GetRectangles(tag, tag2);
             rectangles.Add(GetOneRectangle(firstRectangleTag));
-            
+
             SwapRectanglesTag(1, -1, rectangles[0], rectangles[1]);
             SwapRectanglesPosition(tag, tag2, rectangles[0], rectangles[1]);
             FillRectangle(rectangles[2], GlobalColors.BigRectangleColor);
@@ -179,7 +179,6 @@ namespace SortingAlgorithmVisualizer
                 item.Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush;
                 item.Tag = i;
 
-                //canvas.Children.Add(rectangle);
                 SetRecangleLeft(item, i * item.Width);
                 SetRectangleTop(item, canvas.ActualHeight - item.Height);
             }

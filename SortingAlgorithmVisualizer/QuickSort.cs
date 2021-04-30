@@ -25,7 +25,7 @@ namespace SortingAlgorithmVisualizer
             int index = Partition(arr, start, end);
 
             Draw(start, index, end);
-            Thread.Sleep(100);
+            Thread.Sleep(10);
             
             QuickSort1(arr, start, index - 1);
             QuickSort1(arr, index + 1, end);
