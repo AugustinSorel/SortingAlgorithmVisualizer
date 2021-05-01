@@ -198,6 +198,41 @@ namespace SortingAlgorithmVisualizer
 
         }
 
+
+        internal void HandleRadixSortDrawing(int[] randomInts)
+        {
+            //ClearLastRectanglesColor();
+
+            int i = -1;
+            foreach (var item in canvas.Children.Cast<Rectangle>())
+            {
+                i++;
+                item.Height = randomInts[i];
+                item.Width = canvas.ActualWidth / randomInts.Length;
+                item.Fill = new BrushConverter().ConvertFromString(GlobalColors.BackgroundColor) as SolidColorBrush;
+                item.StrokeThickness = 1;
+                item.Stroke = new BrushConverter().ConvertFromString(GlobalColors.StripsColor) as SolidColorBrush;
+                item.Tag = i;
+
+                SetRecangleLeft(item, i * item.Width);
+                SetRectangleTop(item, canvas.ActualHeight - item.Height);
+            }
+
+            //List<Rectangle> rectangles = new List<Rectangle>
+            //{
+            //    GetOneRectangle(start),
+            //    GetOneRectangle(index),
+            //    GetOneRectangle(end)
+            //};
+
+            //FillRectangle(rectangles[0], GlobalColors.BigRectangleColor);
+            //FillRectangle(rectangles[1], GlobalColors.SmallRectangleColor);
+            //FillRectangle(rectangles[2], GlobalColors.BigRectangleColor);
+
+            //SetOldRectanglesArray(rectangles);
+
+        }
+
         private Rectangle GetOneRectangle(int tag)
         {
             return canvas.Children.OfType<Rectangle>().Where(x => (int)x.Tag == tag).FirstOrDefault();

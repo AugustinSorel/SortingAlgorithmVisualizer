@@ -89,6 +89,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\RadixSort.cs" />
     <Compile Include="Models\SortingEngine.cs" />
     <Compile Include="Models\QuickSort.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
