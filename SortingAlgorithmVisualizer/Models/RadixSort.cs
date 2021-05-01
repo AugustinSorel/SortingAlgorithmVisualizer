@@ -35,7 +35,7 @@ namespace SortingAlgorithmVisualizer
             // instead of passing digit number, exp is passed.
             // exp is 10^i where i is current digit number
             for (int exp = 1; m / exp > 0; exp *= 10)
-                countSort(randomInts, n, exp);
+                countSort(n, exp);
         }
 
         public int getMax(int[] arr, int n)
@@ -49,7 +49,7 @@ namespace SortingAlgorithmVisualizer
 
         // A function to do counting sort of arr[] according to
         // the digit represented by exp.
-        public void countSort(int[] arr, int n, int exp)
+        public void countSort(int n, int exp)
         {
             int[] output = new int[n]; // output array
             int i;
@@ -61,7 +61,7 @@ namespace SortingAlgorithmVisualizer
 
             // Store count of occurrences in count[]
             for (i = 0; i < n; i++)
-                count[(arr[i] / exp) % 10]++;
+                count[(randomInts[i] / exp) % 10]++;
 
             // Change count[i] so that count[i] now contains
             // actual
@@ -72,23 +72,25 @@ namespace SortingAlgorithmVisualizer
             // Build the output array
             for (i = n - 1; i >= 0; i--)
             {
-                output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-                Draw(output);
+                output[count[(randomInts[i] / exp) % 10] - 1] = randomInts[i];
+                Draw(output, count[randomInts[i] / exp % 10] - 1, randomInts);
                 Thread.Sleep(10);
-                count[(arr[i] / exp) % 10]--;
+                count[(randomInts[i] / exp) % 10]--;
             }
-
+            
             // Copy the output array to arr[], so that arr[] now
             // contains sorted numbers according to current
             // digit
             for (i = 0; i < n; i++)
-                arr[i] = output[i];
+            {
+                randomInts[i] = output[i];
+            }
         }
 
-        private void Draw(int[] output)
+        private void Draw(int[] output, int v, int[] exp)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                mainWindowViewModel.HandleRadixSortDrawing(output);
+                mainWindowViewModel.HandleRadixSortDrawing(output, v, exp);
             }));
         }
     }
