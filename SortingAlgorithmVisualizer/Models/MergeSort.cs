@@ -14,7 +14,6 @@ namespace SortingAlgorithmVisualizer
         {
             this.randomInts = randomInts;
             this.mainWindowViewModel = mainWindowViewModel;
-            MessageBox.Show(this.GetType().Name);
         }
 
         public int[] MergeSort1(int[] array)
@@ -51,11 +50,15 @@ namespace SortingAlgorithmVisualizer
                 x++;
             }
             //Recursively sort the left array
+
             left = MergeSort1(left);
             //Recursively sort the right array
             right = MergeSort1(right);
             //Merge our two sorted arrays
             result = Merge(left, right);
+
+            DrawBar(0, 0, result);
+
             return result;
         }
 
@@ -113,22 +116,14 @@ namespace SortingAlgorithmVisualizer
             //Thread.Sleep(10);
         }
 
-        private void Swap(int i, int v)
-        {
-            //int temp = randomInts[i + 1];
-            //randomInts[i + 1] = randomInts[i];
-            //randomInts[i] = temp;
-
-            //DrawBar(i, v);
-        }
-
-        private void DrawBar(int[] result)
+        private void DrawBar(int midPoint, int x, int[] array)
         {
             Application.Current.Dispatcher.Invoke(new Action(() => {
-                //mainWindowViewModel.Test(result);
+                //mainWindowViewModel.HandleMergeSortDrawing(array, midPoint, x);
             }));
             Thread.Sleep(10);
         }
+
 
         public bool IsSorted()
         {
@@ -138,7 +133,7 @@ namespace SortingAlgorithmVisualizer
 
             foreach (var item in randomInts)
             {
-                MessageBox.Show(item.ToString());
+//                MessageBox.Show(item.ToString());
             }
 
             return true;

@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\SortingEngine.cs" />
-    <Compile Include="QuickSort.cs" />
+    <Compile Include="Models\QuickSort.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Models\MergeSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
