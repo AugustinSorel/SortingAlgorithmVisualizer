@@ -14,11 +14,14 @@
 
 ## Images
 
-### Full Screen
-![alt text](https://github.com/AugustinSorel/DoublePendulum/blob/master/TestingImages/Capture%20d%E2%80%99%C3%A9cran%202021-04-01%20213444.png?raw=true)
+### Bubble Sort
+![alt text](https://github.com/AugustinSorel/SortingAlgorithmVisualizer/blob/master/Images/BubbleSort.PNG)
 
-### Small Screen
-![alt text](https://github.com/AugustinSorel/DoublePendulum/blob/master/TestingImages/Capture%20d%E2%80%99%C3%A9cran%202021-04-01%20213512.png?raw=true)
+### Insertion Sort
+![alt text](https://github.com/AugustinSorel/SortingAlgorithmVisualizer/blob/master/Images/InsertionSort.PNG)
 
-### Only the Double Pendulum
-![alt text](https://github.com/AugustinSorel/DoublePendulum/blob/master/TestingImages/Capture%20d%E2%80%99%C3%A9cran%202021-04-01%20213240.png?raw=true)
+### Quick Sort
+![alt text](https://github.com/AugustinSorel/SortingAlgorithmVisualizer/blob/master/Images/QuickSort.PNG)
+
+### Radix Sort
+![alt text](https://github.com/AugustinSorel/SortingAlgorithmVisualizer/blob/master/Images/RadixSort.PNG)
