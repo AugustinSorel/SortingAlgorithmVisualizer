@@ -50,6 +50,9 @@ namespace SortingAlgorithmVisualizer
 
         private void ScreenSizeButton_Click(object sender, RoutedEventArgs e)
         {
+            if (mainWindowViewModel.SortingEngine.BackgroundWorker.IsBusy)
+                return;
+
             if (this.WindowState == WindowState.Maximized)
                 this.WindowState = WindowState.Normal;
             else
