@@ -9,8 +9,7 @@
 * Radix sort
 
 ## Links
-* [help](https://www.myphysicslab.com/pendulum/double-pendulum-en.html) - Help.
-* [Youtube](https://youtu.be/K_Rlfm4sDlg) - Testing video.
+* [Youtube](https://www.youtube.com/watch?v=CuGiLVoadqc) - Testing video.
 
 ## Images
 
